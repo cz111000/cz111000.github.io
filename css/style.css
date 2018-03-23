@@ -589,9 +589,9 @@ a {
     margin-left: 0
 }
 #scheme-Paradox .material-layout .meta {
-    display: flex;
+    display: inline-flex;
     box-sizing: border-box;
-    padding: 1pc;
+    /*padding: 1pc;*/
     height: auto;
     flex-direction: row;
     align-items: center;
@@ -1837,18 +1837,18 @@ a {
     text-align: left;
     text-transform: none
 }
-.sidebar::-webkit-scrollbar-track {
+.sidebar::-webkit-scrollbar-track {		
     border-radius: 2px
 }
 .sidebar::-webkit-scrollbar {
     width: 5px;
-    background-color: #F7F7F7
+    background-color: #F7F7F7;
 }
 .sidebar::-webkit-scrollbar-thumb {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
-    background-color: #BFBFBF
-}
+    background-color: #BFBFBF;
+} 
 .sidebar .sidebar-header {
     height: 158.13px;
     -webkit-transition: all .2s ease-in-out;
@@ -2660,4 +2660,81 @@ a {
     100% {
         transform: rotate(360deg)
     }
+}
+
+/* Tomorrow Night Eighties Theme */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+
+/* Tomorrow Comment */
+#post-content .comment,
+#post-content .quote {
+  color: #999999;
+}
+
+/* Tomorrow Red */
+#post-content .variable,
+#post-content .template-variable,
+#post-content .tag,
+#post-content .name,
+#post-content .selector-id,
+#post-content .selector-class,
+#post-content .regexp,
+#post-content .deletion {
+  color: #f2777a;
+}
+
+/* Tomorrow Orange */
+#post-content .number,
+#post-content .built_in,
+#post-content .builtin-name,
+#post-content .literal,
+#post-content .type,
+#post-content .params,
+#post-content .meta,
+#post-content .link {
+  color: #f99157;
+}
+
+/* Tomorrow Yellow */
+#post-content .attribute {
+  color: #ffcc66;
+}
+
+/* Tomorrow Green */
+#post-content .string,
+#post-content .symbol,
+#post-content .bullet,
+#post-content .addition {
+  color: #99cc99;
+}
+
+/* Tomorrow Blue */
+#post-content .title,
+#post-content .section {
+  color: #6699cc;
+}
+
+/* Tomorrow Purple */
+#post-content .keyword,
+#post-content .selector-tag {
+  color: #cc99cc;
+}
+
+#post-content tr td pre {
+  font-family: "Source Code Pro","Courier New","Andale Mono",Monaco,Monofur,Proggy,"Droid Sans Mono","Deja Vu Sans Mono",Consolas,Inconsolata,"Fira Code";
+  font-size: 16px;
+  display: block;
+  overflow-x: auto;
+  background: #2d2d2d;
+  color: #cccccc;
+  padding: 0.5em;
+}
+
+#post-content .emphasis {
+  font-style: italic;
+}
+
+#post-content .strong {
+  font-weight: bold;
 }
