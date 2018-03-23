@@ -589,13 +589,17 @@ a {
     margin-left: 0
 }
 #scheme-Paradox .material-layout .meta {
-    display: inline-flex;
+    display: flex;
     box-sizing: border-box;
-    /*padding: 1pc;*/
+    padding: 1pc;
     height: auto;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start
+}
+#scheme-Paradox .material-layout .code .meta {
+    display: inline-flex;
+    padding: 0pc;
 }
 #scheme-Paradox .material-layout .meta>.meta__favorites {
     margin: 0 8px;
