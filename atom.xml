@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cz111000.github.io/"/>
-  <updated>2018-03-25T03:52:50.762Z</updated>
+  <updated>2018-03-25T07:17:31.956Z</updated>
   <id>https://cz111000.github.io/</id>
   
   <author>
@@ -17,11 +17,43 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>剑指Offer-题3-数组中重复的数字</title>
+    <link href="https://cz111000.github.io/2018/03/25/%E5%89%91%E6%8C%87Offer-%E9%A2%983-%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97/"/>
+    <id>https://cz111000.github.io/2018/03/25/剑指Offer-题3-数组中重复的数字/</id>
+    <published>2018-03-25T05:54:03.000Z</published>
+    <updated>2018-03-25T07:17:31.956Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;题目：数组中重复的数字&quot;&gt;&lt;a href=&quot;#题目：数组中重复的数字&quot; class=&quot;headerlink&quot; title=&quot;题目：数组中重复的数字&quot;&gt;&lt;/a&gt;题目：数组中重复的数字&lt;/h1&gt;&lt;h2 id=&quot;题目一：找出数组中重复的数字&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="剑指Offer" scheme="https://cz111000.github.io/categories/%E5%89%91%E6%8C%87Offer/"/>
+    
+    
+      <category term="剑指Offer" scheme="https://cz111000.github.io/tags/%E5%89%91%E6%8C%87Offer/"/>
+    
+      <category term="数组" scheme="https://cz111000.github.io/tags/%E6%95%B0%E7%BB%84/"/>
+    
+      <category term="重复" scheme="https://cz111000.github.io/tags/%E9%87%8D%E5%A4%8D/"/>
+    
+      <category term="数字" scheme="https://cz111000.github.io/tags/%E6%95%B0%E5%AD%97/"/>
+    
+  </entry>
+  
+  <entry>
     <title>剑指Offer-题2-实现单例模式</title>
     <link href="https://cz111000.github.io/2018/03/24/%E5%89%91%E6%8C%87Offer-%E9%A2%982-%E5%AE%9E%E7%8E%B0Singleton%E6%A8%A1%E5%BC%8F/"/>
     <id>https://cz111000.github.io/2018/03/24/剑指Offer-题2-实现Singleton模式/</id>
     <published>2018-03-24T13:19:21.000Z</published>
-    <updated>2018-03-25T03:52:50.762Z</updated>
+    <updated>2018-03-25T04:00:14.208Z</updated>
     
     <summary type="html">
     

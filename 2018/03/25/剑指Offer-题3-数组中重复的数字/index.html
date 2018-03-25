@@ -12,7 +12,7 @@
     
     <title>
         
-            标签: Singleton | 
+            剑指Offer-题3-数组中重复的数字 | 
         
         Orange&#39;s Blog
     </title>
@@ -38,7 +38,7 @@
     <meta name="theme-color" content="#FFA500">
     <meta name="author" content="Orange">
     <meta name="description" itemprop="description" content="Orange&#39;s Blog">
-    <meta name="keywords" content="Orange,Blog">
+    <meta name="keywords" content="Orange,Blog,剑指Offer,数组,重复,数字">
 
     <!-- Site Verification -->
     
@@ -67,15 +67,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://cz111000.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="标签: Singleton | Orange&#39;s Blog">
+    <meta property="og:title" content="剑指Offer-题3-数组中重复的数字 | Orange&#39;s Blog">
     <meta property="og:image" content="/img/favicon.png" />
     <meta property="og:description" content="Orange&#39;s Blog">
-    
+    <meta property="og:article:tag" content="剑指Offer"> <meta property="og:article:tag" content="数组"> <meta property="og:article:tag" content="重复"> <meta property="og:article:tag" content="数字"> 
 
+    
+        <meta property="article:published_time" content="3月 25, 2018" />
+        <meta property="article:modified_time" content="3月 25, 2018" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="标签: Singleton | Orange&#39;s Blog">
+    <meta name="twitter:title" content="剑指Offer-题3-数组中重复的数字 | Orange&#39;s Blog">
     <meta name="twitter:description" content="Orange&#39;s Blog">
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -83,13 +86,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="https://cz111000.github.io/tags/Singleton/index.html" />
+        <link rel="canonical" href="https://cz111000.github.io/2018/03/25/剑指Offer-题3-数组中重复的数字/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Orange&#39;s Blog",
+        "logo": "/img/favicon.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Orange",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/favicon.png"
+        },
+        "description": "Bring Fresh Things to Your"
+    },
+    "headline": "剑指Offer-题3-数组中重复的数字",
+    "url": "https://cz111000.github.io/2018/03/25/剑指Offer-题3-数组中重复的数字/index.html",
+    "datePublished": "3月 25, 2018",
+    "dateModified": "3月 25, 2018",
+    "description": "Orange&#39;s Blog",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://cz111000.github.io"
+    }
+}
+</script>
 
 
     
@@ -264,94 +297,271 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#题目：数组中重复的数字"><span class="post-toc-number">1.</span> <span class="post-toc-text">题目：数组中重复的数字</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#题目一：找出数组中重复的数字"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">题目一：找出数组中重复的数字</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#题目二：不修改数组找出数组中重复的数字"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">题目二：不修改数组找出数组中重复的数字</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解析"><span class="post-toc-number">2.</span> <span class="post-toc-text">解析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解析题目一"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">解析题目一</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解析题目二"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">解析题目二</span></a></li></ol></li></ol>
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50 lazy" data-original="http://img.blog.csdn.net/20151123175554677">
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://img.blog.csdn.net/20151123175554677)">
+    
+            <p class="article-headline-p">
+                剑指Offer-题3-数组中重复的数字
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Orange</strong>
+        <span>3月 25, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="https://pan.baidu.com/share/qrcode?w=246&h=246&url=https://cz111000.github.io/2018/03/25/剑指Offer-题3-数组中重复的数字/">
+    
+</ul>
     
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/03/24/剑指Offer-题2-实现Singleton模式/">剑指Offer-题2-实现单例模式</a></p>
-    </div>
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/剑指Offer/">剑指Offer</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/数字/">数字</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/数组/">数组</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/重复/">重复</a>
+    </ul>
+    
 
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
         
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/03/24/剑指Offer-题2-实现Singleton模式/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Orange's avatar">
-            </div>
-            <div>
-                <strong>Orange</strong>
-                <span>3月 24, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/剑指Offer/">剑指Offer</a>
-            </span>
+    
 
-            
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=剑指Offer-题3-数组中重复的数字&url=https://cz111000.github.io/2018/03/25/剑指Offer-题3-数组中重复的数字/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
 
-            
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=剑指Offer-题3-数组中重复的数字&url=https://cz111000.github.io/2018/03/25/剑指Offer-题3-数组中重复的数字/index.html&via=Orange" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
 
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://cz111000.github.io/2018/03/25/剑指Offer-题3-数组中重复的数字/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Orange&#39;s Blog&title=剑指Offer-题3-数组中重复的数字&summary=Orange&#39;s Blog&pics=https://cz111000.github.io/img/favicon.png&url=https://cz111000.github.io/2018/03/25/剑指Offer-题3-数组中重复的数字/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
 </div>
 
-            
-            
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="题目：数组中重复的数字"><a href="#题目：数组中重复的数字" class="headerlink" title="题目：数组中重复的数字"></a>题目：数组中重复的数字</h1><h2 id="题目一：找出数组中重复的数字"><a href="#题目一：找出数组中重复的数字" class="headerlink" title="题目一：找出数组中重复的数字"></a>题目一：找出数组中重复的数字</h2><p>在一个长度为n的数组里的所有数字都在0~n-1的范围内。数组中某些数字是重复的。但不知道有几个数字重复了，也不知道每个数字重复几次。请找出数组中任意一个重复的数字。例如，如果输入长度为7的数组{2,3,1,0,2,5,3}，那么对应的输出是重复的数字2或者3。</p>
+<h2 id="题目二：不修改数组找出数组中重复的数字"><a href="#题目二：不修改数组找出数组中重复的数字" class="headerlink" title="题目二：不修改数组找出数组中重复的数字"></a>题目二：不修改数组找出数组中重复的数字</h2><p>在一个长度为n+1的数组里的所有数字都在1~n的范围内。所以数组中至少有一个数字是重复的。请找出数组中任意一个重复的数字，但不能修改输入的数组。例如，如果输入长度为8的数组{2,3,5,4,3,2,6,7}，那么对应的输出是重复的数字2或者3。</p>
+<h1 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h1><h2 id="解析题目一"><a href="#解析题目一" class="headerlink" title="解析题目一"></a>解析题目一</h2><p>数组在空间上连续且含有下标，此题考虑查找效率<br>稍加思索，决定利用下标：若数值与下标不同则与数值对应下标的数值进行置换，若置换中发现两数相同则查找结束，如此时间复杂度仅O(n)，代码如下<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">findDuplicate</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> length, <span class="keyword">int</span> *duplication)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; ++i)</span><br><span class="line">        <span class="keyword">if</span> (i != arr[i])</span><br><span class="line">            <span class="keyword">if</span> (arr[i] != arr[arr[i]])</span><br><span class="line">            &#123;</span><br><span class="line">                temp = arr[arr[i]];</span><br><span class="line">                arr[arr[i]] = arr[i];</span><br><span class="line">                arr[i] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                *duplication = arr[i];</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对照书本发现思路相同，nice !😎<br>原来无意中已利用下标充当Hash Table(哈希表)的思想解决了问题<br>不过本人漏掉重要的<strong>空值检测、边界检测</strong>😭，修复代码<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">findDuplicate</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> length, <span class="keyword">int</span> *duplication)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (arr == <span class="literal">nullptr</span> || length &lt;= <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; ++i)</span><br><span class="line">        <span class="keyword">if</span> (arr[i] &gt;= length || arr[i] &lt; <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; ++i)</span><br><span class="line">        <span class="keyword">if</span> (i != arr[i])</span><br><span class="line">            <span class="keyword">if</span> (arr[i] != arr[arr[i]])</span><br><span class="line">            &#123;</span><br><span class="line">                temp = arr[arr[i]];</span><br><span class="line">                arr[arr[i]] = arr[i];</span><br><span class="line">                arr[i] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                *duplication = arr[i];</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>原本以为完美无瑕，<strong>测试数组{0,2,0}发现无法找出重复数字</strong>。<br>究其原因<strong>对于替换数值后的数组{0,0,2}未再次判断，导致第二位 <code>0</code> 成为漏网之鱼</strong>，下为书中神级代码<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">duplicate</span><span class="params">(<span class="keyword">int</span> numbers[], <span class="keyword">int</span> length, <span class="keyword">int</span> *duplication)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (numbers == <span class="literal">nullptr</span> || length &lt;= <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; ++i)</span><br><span class="line">        <span class="keyword">if</span> (numbers[i] &gt;= length || numbers[i] &lt; <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; ++i)</span><br><span class="line">        <span class="comment">// 使用while便无“漏网之0”</span></span><br><span class="line">        <span class="keyword">while</span> (i != numbers[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (numbers[i] == numbers[numbers[i]])</span><br><span class="line">            &#123;</span><br><span class="line">                *duplication = numbers[i];</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            temp = numbers[numbers[i]];</span><br><span class="line">            numbers[numbers[i]] = numbers[i];</span><br><span class="line">            numbers[i] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="解析题目二"><a href="#解析题目二" class="headerlink" title="解析题目二"></a>解析题目二</h2><p>禁止修改输入数组，呵！断我财路，emmmm<br>苦思冥想，</p>
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            <img id='author-avatar' width='20px' alt='CC许可协议' title='CC许可协议' src='https://creativecommons.org/images/deed/cc-logo.jpg' /><img id='author-avatar' width='20px' alt='署名' title='署名' src='https://creativecommons.org/images/deed/by.png' /><img id='author-avatar' width='20px' alt='非商业性使用' title='非商业性使用' src='https://creativecommons.org/images/deed/nc.png' /><img id='author-avatar' width='20px' alt='相同方式共享' title='相同方式共享' src='https://creativecommons.org/images/deed/sa.png' /><br/>本文采用 <a rel='nofollow noopener noreferrer' href='https://creativecommons.org/licenses/by-nc-sa/3.0/deed.zh' target='_blank'>CC BY-NC-SA 3.0 Unported</a> 协议进行许可
+                        </strong>
+                    </p>
+                </blockquote>
         
     
 
     
+</div>
 
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
 
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
+                
 
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
-    $('.post_thumbnail-random').addClass('lazy');
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 Gitalk -->
+<div id="gitalk-comment">
+    <!-- Gitalk 评论框 -->
+<div id="gitalk-container"></div>
 
-        locatePost = locatePost.next();
-    }
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script src="/js/md5.min.js"></script>
+
+<script>
+    var gitalk = new Gitalk({
+            clientID: '3c4ec59f507dd736e460',
+            clientSecret: '6530b72d9302175cda6cc9a6f9ac6ad422d801b7',
+            repo: 'Blog_Comments',
+            owner: 'cz111000',
+            admin: ['cz111000'],
+            // Ensure uniqueness and length less than 50
+            id: $.md5(location.pathname),
+            // facebook-like distraction free mode
+            distractionFreeMode: false
+        })
+   gitalk.render('gitalk-container')
 </script>
-
-    
 </div>
+<style>
+    #gitalk-comment {
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/03/24/剑指Offer-题2-实现Singleton模式/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
@@ -553,6 +763,14 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 
                     
 
