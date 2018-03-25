@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cz111000.github.io/"/>
-  <updated>2018-03-25T01:54:19.208Z</updated>
+  <updated>2018-03-25T03:27:13.304Z</updated>
   <id>https://cz111000.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://cz111000.github.io/2018/03/24/%E5%89%91%E6%8C%87Offer-%E9%A2%982-%E5%AE%9E%E7%8E%B0Singleton%E6%A8%A1%E5%BC%8F/"/>
     <id>https://cz111000.github.io/2018/03/24/剑指Offer-题2-实现Singleton模式/</id>
     <published>2018-03-24T13:19:21.000Z</published>
-    <updated>2018-03-25T01:54:19.208Z</updated>
+    <updated>2018-03-25T03:27:13.304Z</updated>
     
     <summary type="html">
     
@@ -40,13 +40,11 @@
     
       <category term="剑指Offer" scheme="https://cz111000.github.io/tags/%E5%89%91%E6%8C%87Offer/"/>
     
-      <category term="算法" scheme="https://cz111000.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="单例" scheme="https://cz111000.github.io/tags/%E5%8D%95%E4%BE%8B/"/>
     
-      <category term="赋值" scheme="https://cz111000.github.io/tags/%E8%B5%8B%E5%80%BC/"/>
+      <category term="Singleton" scheme="https://cz111000.github.io/tags/Singleton/"/>
     
-      <category term="运算符" scheme="https://cz111000.github.io/tags/%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
-    
-      <category term="函数" scheme="https://cz111000.github.io/tags/%E5%87%BD%E6%95%B0/"/>
+      <category term="模式" scheme="https://cz111000.github.io/tags/%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
