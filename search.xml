@@ -6,7 +6,7 @@
       <title>剑指Offer-题4-二维数组中的查找</title>
       <link href="/2018/03/26/%E5%89%91%E6%8C%87Offer-%E9%A2%984-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/"/>
       <url>/2018/03/26/%E5%89%91%E6%8C%87Offer-%E9%A2%984-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/</url>
-      <content type="html"><![CDATA[<h1 id="题目：二维数组中的查找"><a href="#题目：二维数组中的查找" class="headerlink" title="题目：二维数组中的查找"></a>题目：二维数组中的查找</h1><p>在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p><h1 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h1><p>可以肯定的是直接遍历不可取🙄。之后想到跳步判断，先走斜线，若此时数值大于查找数则往左或往右倒退？往左之后该往上还是往下？继而联想到A*路径查找算法……<br>naive ! 书中指出<strong>考虑每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序</strong>。问题变得困难是因为考虑数组中中间位置的数，此时该位置含有两个排序规律；不如考虑特殊位置-顶角的数呢？<br>二维数组有四个顶角，选择其中某个顶角分析。举例分析：<br>有如下二维数组，查找数字 <code>7</code><br>$$<br>\begin{bmatrix}<br>    1 &amp; 2 &amp; 8 &amp; 9 \\<br>    2 &amp; 4 &amp; 9 &amp; 12 \\<br>    4 &amp; 7 &amp; 10 &amp; 13 \\<br>    6 &amp; 8 &amp; 11 &amp; 15 \\<br>\end{bmatrix}<br>$$<br>对四个顶点分情况讨论(↓、→、↘表示增大方向)：</p><ul><li>考虑左上角则有规律：对于左上角有三个出度<br>$$<br>\begin{bmatrix}<br>  ● &amp; \rightarrow &amp; \rightarrow &amp; \rightarrow \\<br>  \downarrow &amp; \searrow &amp; \downarrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \searrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \rightarrow &amp; \searrow \\<br>\end{bmatrix}<br>$$</li><li>考虑右下角则有规律：对于右下角有三个入度<br>$$<br>\begin{bmatrix}<br>  ＋ &amp; \rightarrow &amp; \rightarrow &amp; \rightarrow \\<br>  \downarrow &amp; \searrow &amp; \downarrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \searrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \rightarrow &amp; ● \\<br>\end{bmatrix}<br>$$</li><li>考虑右上角则有规律：<strong>对于右上角有一个入度和一个出度</strong><br>$$<br>\begin{bmatrix}<br>  ＋ &amp; \rightarrow &amp; \rightarrow &amp; ● \\<br>  \downarrow &amp; \searrow &amp; \downarrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \searrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \rightarrow &amp; \searrow \\<br>\end{bmatrix}<br>$$</li><li>考虑左下角则有规律：<strong>对于左下角有一个入度和一个出度</strong><br>$$<br>\begin{bmatrix}<br>  ＋ &amp; \rightarrow &amp; \rightarrow &amp; \rightarrow \\<br>  \downarrow &amp; \searrow &amp; \downarrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \searrow &amp; \downarrow \\<br>  ● &amp; \rightarrow &amp; \rightarrow &amp; \searrow \\<br>\end{bmatrix}<br>$$<br>“柿子要捡软的捏”，当然选一出一入的突破口啊！例如选择右上角数字 <code>9</code>，则 <code>9 &gt; 7</code> 说明第四列均大于 <code>7</code>，故判断数组范围缩小为<br>$$<br>\begin{bmatrix}<br>  1 &amp; 2 &amp; 8 \\<br>  2 &amp; 4 &amp; 9 \\<br>  4 &amp; 7 &amp; 10 \\<br>  6 &amp; 8 &amp; 11 \\<br>\end{bmatrix}<br>$$<br>继续选择右上角数字 <code>8</code>，则 <code>8 &gt; 7</code> 说明第四列均大于 <code>8</code>，故判断数组范围又缩小<br>$$<br>\begin{bmatrix}<br>  1 &amp; 2 \\<br>  2 &amp; 4 \\<br>  4 &amp; 7 \\<br>  6 &amp; 8 \\<br>\end{bmatrix}<br>$$<br>继续选择右上角数字 <code>2</code>，则 <code>2 &lt; 7</code> 说明第一行均小于 <code>8</code>，故判断数组范围双缩小<br>$$<br>\begin{bmatrix}<br>  2 &amp; 4 \\<br>  4 &amp; 7 \\<br>  6 &amp; 8 \\<br>\end{bmatrix}<br>$$<br>继续选择右上角数字 <code>4</code>，则 <code>4 &lt; 7</code> 说明第一行均小于 <code>8</code>，故判断数组范围叒缩小<br>$$<br>\begin{bmatrix}<br>  4 &amp; 7 \\<br>  6 &amp; 8 \\<br>\end{bmatrix}<br>$$<br>选择右上角数字 <code>7</code>，则寻找完毕😄。转化为代码如下<pre><code class="C++"></code></pre></li></ul>]]></content>
+      <content type="html"><![CDATA[<h1 id="题目：二维数组中的查找"><a href="#题目：二维数组中的查找" class="headerlink" title="题目：二维数组中的查找"></a>题目：二维数组中的查找</h1><p>在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p><h1 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h1><p>可以肯定的是直接遍历不可取🙄。之后想到跳步判断，先走斜线，若此时数值大于查找数则往左或往右倒退？往左之后该往上还是往下？继而联想到A*路径查找算法……<br>naive ! 书中指出<strong>考虑每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序</strong>。问题变得困难是因为考虑数组中中间位置的数，此时该位置含有两个排序规律；不如考虑特殊位置-顶角的数呢？<br>二维数组有四个顶角，选择其中某个顶角分析。举例分析：<br>有如下二维数组，查找数字 <code>7</code><br>$$<br>\begin{bmatrix}<br>    1 &amp; 2 &amp; 8 &amp; 9 \\<br>    2 &amp; 4 &amp; 9 &amp; 12 \\<br>    4 &amp; 7 &amp; 10 &amp; 13 \\<br>    6 &amp; 8 &amp; 11 &amp; 15 \\<br>\end{bmatrix}<br>$$<br>对四个顶点分情况讨论(↓、→、↘表示增大方向)：</p><ul><li>考虑左上角则有规律：对于左上角有三个出度<br>$$<br>\begin{bmatrix}<br>  ● &amp; \rightarrow &amp; \rightarrow &amp; \rightarrow \\<br>  \downarrow &amp; \searrow &amp; \downarrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \searrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \rightarrow &amp; \searrow \\<br>\end{bmatrix}<br>$$</li><li>考虑右下角则有规律：对于右下角有三个入度<br>$$<br>\begin{bmatrix}<br>  ＋ &amp; \rightarrow &amp; \rightarrow &amp; \rightarrow \\<br>  \downarrow &amp; \searrow &amp; \downarrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \searrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \rightarrow &amp; ● \\<br>\end{bmatrix}<br>$$</li><li>考虑右上角则有规律：<strong>对于右上角有一个入度和一个出度</strong><br>$$<br>\begin{bmatrix}<br>  ＋ &amp; \rightarrow &amp; \rightarrow &amp; ● \\<br>  \downarrow &amp; \searrow &amp; \downarrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \searrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \rightarrow &amp; \searrow \\<br>\end{bmatrix}<br>$$</li><li>考虑左下角则有规律：<strong>对于左下角有一个入度和一个出度</strong><br>$$<br>\begin{bmatrix}<br>  ＋ &amp; \rightarrow &amp; \rightarrow &amp; \rightarrow \\<br>  \downarrow &amp; \searrow &amp; \downarrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \searrow &amp; \downarrow \\<br>  ● &amp; \rightarrow &amp; \rightarrow &amp; \searrow \\<br>\end{bmatrix}<br>$$<br>“柿子要捡软的捏”，当然选一出一入的突破口啊！例如选择右上角数字 <code>9</code>，则 <code>9 &gt; 7</code> 说明第四列均大于 <code>7</code>，故判断数组范围缩小为<br>$$<br>\begin{bmatrix}<br>  1 &amp; 2 &amp; 8 \\<br>  2 &amp; 4 &amp; 9 \\<br>  4 &amp; 7 &amp; 10 \\<br>  6 &amp; 8 &amp; 11 \\<br>\end{bmatrix}<br>$$<br>继续选择右上角数字 <code>8</code>，则 <code>8 &gt; 7</code> 说明第四列均大于 <code>8</code>，故判断数组范围又缩小<br>$$<br>\begin{bmatrix}<br>  1 &amp; 2 \\<br>  2 &amp; 4 \\<br>  4 &amp; 7 \\<br>  6 &amp; 8 \\<br>\end{bmatrix}<br>$$<br>继续选择右上角数字 <code>2</code>，则 <code>2 &lt; 7</code> 说明第一行均小于 <code>8</code>，故判断数组范围双缩小<br>$$<br>\begin{bmatrix}<br>  2 &amp; 4 \\<br>  4 &amp; 7 \\<br>  6 &amp; 8 \\<br>\end{bmatrix}<br>$$<br>继续选择右上角数字 <code>4</code>，则 <code>4 &lt; 7</code> 说明第一行均小于 <code>8</code>，故判断数组范围叒缩小<br>$$<br>\begin{bmatrix}<br>  4 &amp; 7 \\<br>  6 &amp; 8 \\<br>\end{bmatrix}<br>$$<br>选择右上角数字 <code>7</code>，则寻找完毕😄。转化为代码如下<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 略</span></span><br></pre></td></tr></table></figure></li></ul>]]></content>
       
       <categories>
           
@@ -19,9 +19,9 @@
             
             <tag> 剑指Offer </tag>
             
-            <tag> 二维 </tag>
-            
             <tag> 数组 </tag>
+            
+            <tag> 二维 </tag>
             
             <tag> 查找 </tag>
             
@@ -193,17 +193,17 @@
   
     
     <entry>
-      <title>About</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
-      <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>鄙人不才，小博供阅</p><h2 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h2><ul><li>QQ：<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2506649223&amp;site=qq&amp;menu=yes" target="_blank" rel="noopener">2506649223</a></li><li>Email：<a href="mailto:cz335360@gmail.com" target="_blank" rel="noopener">cz335360@gmail.com</a></li></ul>]]></content>
-    </entry>
-    
-    <entry>
       <title>links</title>
       <link href="/links/index.html"/>
       <url>/links/index.html</url>
       <content type="html"><![CDATA[]]></content>
+    </entry>
+    
+    <entry>
+      <title>About</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
+      <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>鄙人不才，小博供阅</p><h2 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h2><ul><li>QQ：<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2506649223&amp;site=qq&amp;menu=yes" target="_blank" rel="noopener">2506649223</a></li><li>Email：<a href="mailto:cz335360@gmail.com" target="_blank" rel="noopener">cz335360@gmail.com</a></li></ul>]]></content>
     </entry>
     
     <entry>

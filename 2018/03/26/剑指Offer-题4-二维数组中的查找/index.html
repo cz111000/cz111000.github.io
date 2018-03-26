@@ -56,7 +56,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="Orange&#39;s Blog">
-    <meta name="keywords" content="Orange,Blog,剑指Offer,二维,数组,查找">
+    <meta name="keywords" content="Orange,Blog,剑指Offer,数组,二维,查找">
     <meta name="theme-color" content="#FFA500">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -241,11 +241,11 @@
     <meta property="og:title" content="剑指Offer-题4-二维数组中的查找 | Orange&#39;s Blog">
     <meta property="og:image" content="https://img18.pixhost.org/images/83/67018152_logo.png">
     <meta property="og:description" content="Orange&#39;s Blog">
-    <meta property="og:article:tag" content="剑指Offer"> <meta property="og:article:tag" content="二维"> <meta property="og:article:tag" content="数组"> <meta property="og:article:tag" content="查找"> 
+    <meta property="og:article:tag" content="剑指Offer"> <meta property="og:article:tag" content="数组"> <meta property="og:article:tag" content="二维"> <meta property="og:article:tag" content="查找"> 
 
     
         <meta property="article:published_time" content="Mon Mar 26 2018 09:53:19 GMT+0800">
-        <meta property="article:modified_time" content="Mon Mar 26 2018 17:59:45 GMT+0800">
+        <meta property="article:modified_time" content="Mon Mar 26 2018 18:15:02 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -268,7 +268,7 @@
     "mainEntityOfPage": "https://cz111000.github.io/2018/03/26/剑指Offer-题4-二维数组中的查找/index.html",
     "headline": "剑指Offer-题4-二维数组中的查找",
     "datePublished": "Mon Mar 26 2018 09:53:19 GMT+0800",
-    "dateModified": "Mon Mar 26 2018 17:59:45 GMT+0800",
+    "dateModified": "Mon Mar 26 2018 18:15:02 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Orange",
@@ -286,7 +286,7 @@
             "url": "https://img18.pixhost.org/images/83/67018152_logo.png"
         }
     },
-    "keywords": ",剑指Offer,二维,数组,查找Orange,Blog",
+    "keywords": ",剑指Offer,数组,二维,查找Orange,Blog",
     "description": "Orange&#39;s Blog",
 }
 </script>
@@ -507,9 +507,7 @@
 <li>考虑左上角则有规律：对于左上角有三个出度<br>$$<br>\begin{bmatrix}<br>  ● &amp; \rightarrow &amp; \rightarrow &amp; \rightarrow \\<br>  \downarrow &amp; \searrow &amp; \downarrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \searrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \rightarrow &amp; \searrow \\<br>\end{bmatrix}<br>$$</li>
 <li>考虑右下角则有规律：对于右下角有三个入度<br>$$<br>\begin{bmatrix}<br>  ＋ &amp; \rightarrow &amp; \rightarrow &amp; \rightarrow \\<br>  \downarrow &amp; \searrow &amp; \downarrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \searrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \rightarrow &amp; ● \\<br>\end{bmatrix}<br>$$</li>
 <li>考虑右上角则有规律：<strong>对于右上角有一个入度和一个出度</strong><br>$$<br>\begin{bmatrix}<br>  ＋ &amp; \rightarrow &amp; \rightarrow &amp; ● \\<br>  \downarrow &amp; \searrow &amp; \downarrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \searrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \rightarrow &amp; \searrow \\<br>\end{bmatrix}<br>$$</li>
-<li>考虑左下角则有规律：<strong>对于左下角有一个入度和一个出度</strong><br>$$<br>\begin{bmatrix}<br>  ＋ &amp; \rightarrow &amp; \rightarrow &amp; \rightarrow \\<br>  \downarrow &amp; \searrow &amp; \downarrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \searrow &amp; \downarrow \\<br>  ● &amp; \rightarrow &amp; \rightarrow &amp; \searrow \\<br>\end{bmatrix}<br>$$<br>“柿子要捡软的捏”，当然选一出一入的突破口啊！例如选择右上角数字 <code>9</code>，则 <code>9 &gt; 7</code> 说明第四列均大于 <code>7</code>，故判断数组范围缩小为<br>$$<br>\begin{bmatrix}<br>  1 &amp; 2 &amp; 8 \\<br>  2 &amp; 4 &amp; 9 \\<br>  4 &amp; 7 &amp; 10 \\<br>  6 &amp; 8 &amp; 11 \\<br>\end{bmatrix}<br>$$<br>继续选择右上角数字 <code>8</code>，则 <code>8 &gt; 7</code> 说明第四列均大于 <code>8</code>，故判断数组范围又缩小<br>$$<br>\begin{bmatrix}<br>  1 &amp; 2 \\<br>  2 &amp; 4 \\<br>  4 &amp; 7 \\<br>  6 &amp; 8 \\<br>\end{bmatrix}<br>$$<br>继续选择右上角数字 <code>2</code>，则 <code>2 &lt; 7</code> 说明第一行均小于 <code>8</code>，故判断数组范围双缩小<br>$$<br>\begin{bmatrix}<br>  2 &amp; 4 \\<br>  4 &amp; 7 \\<br>  6 &amp; 8 \\<br>\end{bmatrix}<br>$$<br>继续选择右上角数字 <code>4</code>，则 <code>4 &lt; 7</code> 说明第一行均小于 <code>8</code>，故判断数组范围叒缩小<br>$$<br>\begin{bmatrix}<br>  4 &amp; 7 \\<br>  6 &amp; 8 \\<br>\end{bmatrix}<br>$$<br>选择右上角数字 <code>7</code>，则寻找完毕😄。转化为代码如下<pre><code class="C++">
-</code></pre>
-</li>
+<li>考虑左下角则有规律：<strong>对于左下角有一个入度和一个出度</strong><br>$$<br>\begin{bmatrix}<br>  ＋ &amp; \rightarrow &amp; \rightarrow &amp; \rightarrow \\<br>  \downarrow &amp; \searrow &amp; \downarrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \searrow &amp; \downarrow \\<br>  ● &amp; \rightarrow &amp; \rightarrow &amp; \searrow \\<br>\end{bmatrix}<br>$$<br>“柿子要捡软的捏”，当然选一出一入的突破口啊！例如选择右上角数字 <code>9</code>，则 <code>9 &gt; 7</code> 说明第四列均大于 <code>7</code>，故判断数组范围缩小为<br>$$<br>\begin{bmatrix}<br>  1 &amp; 2 &amp; 8 \\<br>  2 &amp; 4 &amp; 9 \\<br>  4 &amp; 7 &amp; 10 \\<br>  6 &amp; 8 &amp; 11 \\<br>\end{bmatrix}<br>$$<br>继续选择右上角数字 <code>8</code>，则 <code>8 &gt; 7</code> 说明第四列均大于 <code>8</code>，故判断数组范围又缩小<br>$$<br>\begin{bmatrix}<br>  1 &amp; 2 \\<br>  2 &amp; 4 \\<br>  4 &amp; 7 \\<br>  6 &amp; 8 \\<br>\end{bmatrix}<br>$$<br>继续选择右上角数字 <code>2</code>，则 <code>2 &lt; 7</code> 说明第一行均小于 <code>8</code>，故判断数组范围双缩小<br>$$<br>\begin{bmatrix}<br>  2 &amp; 4 \\<br>  4 &amp; 7 \\<br>  6 &amp; 8 \\<br>\end{bmatrix}<br>$$<br>继续选择右上角数字 <code>4</code>，则 <code>4 &lt; 7</code> 说明第一行均小于 <code>8</code>，故判断数组范围叒缩小<br>$$<br>\begin{bmatrix}<br>  4 &amp; 7 \\<br>  6 &amp; 8 \\<br>\end{bmatrix}<br>$$<br>选择右上角数字 <code>7</code>，则寻找完毕😄。转化为代码如下<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 略</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 
         
