@@ -84,7 +84,7 @@
 
         
             
-                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?hylyeVLLCYOWbu6fKfn0fw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?oWP/xO7B/HR5HyTeFEJzSw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
                 <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-eighties.min.css?as25J1I+1SbOMXftxplbHQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
             
         
@@ -539,35 +539,7 @@
 </ul>
 <p><strong><em>取整步骤需要对小数四舍五入，对效率略有影响</em></strong></p>
 <p>最终代码如下</p>
-<pre><code class="c">/**
-    使用openGL的glut库
-    #include &lt;gl\glut.h&gt;
-    #include &lt;math.h&gt;
-    x1 = 0，y1 = 0
-    x2 = 6，y2 = 4
-*/
-void drawLineDDA(GLint x1, GLint y1, GLint x2, GLint y2)
-{
-    glColor3f(1.0f, 0.0f, 0.0f);    //置颜色为红
-    int dx = x2 - x1;
-    int dy = y2 - y1;
-    dx = abs(dx);
-    dy = abs(dy);
-    int step = dx &gt; dy ? dx : dy;    //判断k与1的关系，若dx大，水平方向延伸为主；若dy大，垂直方向延伸为主
-    double xin = dx / step;    //x轴步长
-    double yin = dy / (double)step;    //y轴步长
-    double x = x1;
-    double y = y1;
-    glBegin(GL_POINTS);
-    for (int i = 0; i &lt;= step; i++)
-    {
-        glVertex2f(x / 10.0, int(y + 0.5) / 10.0);    //int(y + 0.5)将y值四舍五入，绘于标准化坐标系，故除以10.0
-        x = x + xin;
-        y = y + yin;
-    }
-    glEnd();
-}
-</code></pre>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	使用openGL的glut库</span></span><br><span class="line"><span class="comment">	#include &lt;gl\glut.h&gt;</span></span><br><span class="line"><span class="comment">	#include &lt;math.h&gt;</span></span><br><span class="line"><span class="comment">	x1 = 0，y1 = 0</span></span><br><span class="line"><span class="comment">	x2 = 6，y2 = 4</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">drawLineDDA</span><span class="params">(GLint x1, GLint y1, GLint x2, GLint y2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	glColor3f(<span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);	<span class="comment">//置颜色为红</span></span><br><span class="line">	<span class="keyword">int</span> dx = x2 - x1;</span><br><span class="line">	<span class="keyword">int</span> dy = y2 - y1;</span><br><span class="line">	dx = <span class="built_in">abs</span>(dx);</span><br><span class="line">	dy = <span class="built_in">abs</span>(dy);</span><br><span class="line">	<span class="keyword">int</span> step = dx &gt; dy ? dx : dy;	<span class="comment">//判断k与1的关系，若dx大，水平方向延伸为主；若dy大，垂直方向延伸为主</span></span><br><span class="line">	<span class="keyword">double</span> xin = dx / step;	<span class="comment">//x轴步长</span></span><br><span class="line">	<span class="keyword">double</span> yin = dy / (<span class="keyword">double</span>)step;	<span class="comment">//y轴步长</span></span><br><span class="line">	<span class="keyword">double</span> x = x1;</span><br><span class="line">	<span class="keyword">double</span> y = y1;</span><br><span class="line">	glBegin(GL_POINTS);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= step; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		glVertex2f(x / <span class="number">10.0</span>, <span class="keyword">int</span>(y + <span class="number">0.5</span>) / <span class="number">10.0</span>);	<span class="comment">//int(y + 0.5)将y值四舍五入，绘于标准化坐标系，故除以10.0</span></span><br><span class="line">		x = x + xin;</span><br><span class="line">		y = y + yin;</span><br><span class="line">	&#125;</span><br><span class="line">	glEnd();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>绘制结果如图（补上黑色网格，蓝线为预期效果，绿点为可点亮像素点，白色部分代表像素空隙（放大效果））</p>
 <p><img src="https://raw.githubusercontent.com/cz111000/DrawLine/master/DDA.PNG" alt="DDA算法效果图"></p>
 <h2 id="逐点比较算法（插补法）"><a href="#逐点比较算法（插补法）" class="headerlink" title="逐点比较算法（插补法）"></a>逐点比较算法（插补法）</h2><p>此算法以像素点为主，<strong>第一象限</strong>前提下考虑<strong>右方向</strong>和<strong>上方向</strong>像素点与直线位置，二选一点亮</p>
@@ -594,37 +566,7 @@ void drawLineDDA(GLint x1, GLint y1, GLint x2, GLint y2)
 <p><strong><em>因为可能点亮上方像素点，意味同一y值下不只点亮一点像素，故效率较低</em></strong></p>
 <p>同理可得第二象限、第三象限、第四象限求法，请读者自行计算，不再赘述（偷个懒 \滑稽）</p>
 <p>最终代码如下</p>
-<pre><code class="c">/**
-使用openGL的glut库
-#include &lt;gl\glut.h&gt;
-#include &lt;math.h&gt;
-*/
-void drawLineInsert(GLint x1, GLint y1, GLint x2, GLint y2)
-{
-    glColor3f(1.0f, 0.0f, 0.0f);    //置颜色为红
-    int dx = x2 - x1;
-    int dy = y2 - y1;
-    int f = 0;
-    double x = x1;
-    double y = y1;
-    glBegin(GL_POINTS);
-    while (x &lt; x2 + 1)
-    {
-        glVertex2f(x / 10.0, y / 10.0);    //绘制于标准化坐标系，故除以10.0
-        if (f &gt;= 0)
-        {
-            x = x + 1;
-            f = f - dy;
-        }
-        else
-        {
-            y = y + 1;
-            f = f + dx;
-        }
-    }
-    glEnd();
-}
-</code></pre>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">使用openGL的glut库</span></span><br><span class="line"><span class="comment">#include &lt;gl\glut.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;math.h&gt;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">drawLineInsert</span><span class="params">(GLint x1, GLint y1, GLint x2, GLint y2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	glColor3f(<span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);	<span class="comment">//置颜色为红</span></span><br><span class="line">	<span class="keyword">int</span> dx = x2 - x1;</span><br><span class="line">	<span class="keyword">int</span> dy = y2 - y1;</span><br><span class="line">	<span class="keyword">int</span> f = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">double</span> x = x1;</span><br><span class="line">	<span class="keyword">double</span> y = y1;</span><br><span class="line">	glBegin(GL_POINTS);</span><br><span class="line">	<span class="keyword">while</span> (x &lt; x2 + <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		glVertex2f(x / <span class="number">10.0</span>, y / <span class="number">10.0</span>);	<span class="comment">//绘制于标准化坐标系，故除以10.0</span></span><br><span class="line">		<span class="keyword">if</span> (f &gt;= <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			x = x + <span class="number">1</span>;</span><br><span class="line">			f = f - dy;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			y = y + <span class="number">1</span>;</span><br><span class="line">			f = f + dx;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	glEnd();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>绘制结果如图（补上黑色网格，蓝线为预期效果，绿点为可点亮像素点，白色部分代表像素空隙（放大效果））</p>
 <p><img src="https://raw.githubusercontent.com/cz111000/DrawLine/master/Insert.PNG" alt="插补法效果图"></p>
 <h2 id="Bresenham算法"><a href="#Bresenham算法" class="headerlink" title="Bresenham算法"></a>Bresenham算法</h2><p>此算法基于DDA算法进行逐点比较改进而来，同逐点比较法以像素点为主，考虑<strong>右方向</strong>和<strong>右上方向</strong>像素点与直线位置，二选一点亮</p>
@@ -667,35 +609,7 @@ void drawLineInsert(GLint x1, GLint y1, GLint x2, GLint y2)
 <p><strong>当 <code>e = dx</code> 时，<code>e = e + 2 * dy * dx - 2 * dx * dx</code>（即点亮右上方像素点）</strong></p>
 <p><strong>当 <code>e &lt; dx</code> 时，<code>e = e - 2 * dx * dx</code>（即点亮右方像素点）</strong></p>
 <p><strong><em>同一y值下仅点亮一点像素，且计算过程均为加减法 (上式乘数固定值)，适用各象限无需分类，高效快捷</em></strong></p>
-<p>最终代码如下</p>
-<pre><code class="c">/**
-使用openGL的glut库
-#include &lt;gl\glut.h&gt;
-#include &lt;math.h&gt;
-*/
-void drawLineBresenham(GLint x1, GLint y1, GLint x2, GLint y2)
-{
-    glColor3f(1.0f, 0.0f, 0.0f);    //置颜色为红
-    int dx = 1;
-    double dy = (y2 - y1) / (double)(x2 - x1);
-    double e = -dx;
-    double x = x1;
-    double y = y1;
-    glBegin(GL_POINTS);
-    while (x &lt; x2 + 1)
-    {
-        glVertex2f(x / 10.0, y / 10.0);    //绘制于标准化坐标系，故除以10.0
-        x++;
-        e = e + 2 * dy * dx;    //可换为单一变量无需多次做乘法
-        if (e &gt;= 0)
-        {
-            y++;
-            e = e - 2 * dx * dx;
-        }
-    }
-    glEnd();
-}
-</code></pre>
+<p>最终代码如下<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">使用openGL的glut库</span></span><br><span class="line"><span class="comment">#include &lt;gl\glut.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;math.h&gt;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">drawLineBresenham</span><span class="params">(GLint x1, GLint y1, GLint x2, GLint y2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	glColor3f(<span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);	<span class="comment">//置颜色为红</span></span><br><span class="line">	<span class="keyword">int</span> dx = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">double</span> dy = (y2 - y1) / (<span class="keyword">double</span>)(x2 - x1);</span><br><span class="line">	<span class="keyword">double</span> e = -dx;</span><br><span class="line">	<span class="keyword">double</span> x = x1;</span><br><span class="line">	<span class="keyword">double</span> y = y1;</span><br><span class="line">	glBegin(GL_POINTS);</span><br><span class="line">	<span class="keyword">while</span> (x &lt; x2 + <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		glVertex2f(x / <span class="number">10.0</span>, y / <span class="number">10.0</span>);	<span class="comment">//绘制于标准化坐标系，故除以10.0</span></span><br><span class="line">		x++;</span><br><span class="line">		e = e + <span class="number">2</span> * dy * dx;	<span class="comment">//可换为单一变量无需多次做乘法</span></span><br><span class="line">		<span class="keyword">if</span> (e &gt;= <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			y++;</span><br><span class="line">			e = e - <span class="number">2</span> * dx * dx;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	glEnd();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>绘制结果如图（补上黑色网格，蓝线为预期效果，绿点为可点亮像素点，白色部分代表像素空隙（放大效果））</p>
 <p><img src="https://raw.githubusercontent.com/cz111000/DrawLine/master/Bresenham.PNG" alt="Bresenham算法效果图"></p>
 <hr>

@@ -84,7 +84,7 @@
 
         
             
-                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?hylyeVLLCYOWbu6fKfn0fw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?oWP/xO7B/HR5HyTeFEJzSw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
                 <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-eighties.min.css?as25J1I+1SbOMXftxplbHQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
             
         
@@ -508,161 +508,15 @@
 <li>返回实例的方法必定使用 <code>new</code> 创建实例(否则将产生值传递生成多个单例)，故需存储静态实例指针待销毁时使用</li>
 <li>静态变量用于存储变量创建状态，将其设为 <code>int flag</code> ？此举造成冗余，不如利用静态实例指针</li>
 </ul>
-<p>理清三点后奉上本人渣码</p>
-<pre><code class="C++">class Singleton
-{
-public:
-    ~Singleton();
-    static Singleton* s_pInstance;
-    static Singleton* getInstance();
-private:
-    Singleton();
-    // other members......
-}
-
-// C++中仅有静态整形常量才可于类内初始化，否则导致所有实例均含该静态成员
-Singleton* Singleton::s_pInstance = nullptr;
-
-Singleton::Singleton() {}
-
-Singleton::~Singleton()
-{
-    if (nullptr != Singleton::s_pInstance)
-    {
-        delete Singleton::s_pInstance;
-        Singleton::s_pInstance = nullptr;
-    }
-}
-
-Singleton* Singleton::getInstance()
-{
-    if (nullptr == Singleton::s_pInstance)
-        Singleton::s_pInstance = new Singleton();
-    return Singleton::s_pInstance;
-}
-</code></pre>
-<p>看似完美，却木有考虑多线程下同时执行 <code>if (nullptr == Singleton::s_pInstance)</code> 情况，加锁加锁……</p>
-<pre><code class="C++">// 使用window API操控锁
-class LockBase
-{
-public:
-    LockBase()
-    {
-        ::InitializeCriticalSection(&amp;cs);
-    }
-    ~LockBase()
-    {
-        ::DeleteCriticalSection(&amp;cs);
-    }
-    void lock()
-    {
-        ::EnterCriticalSection(&amp;cs);
-    }
-    void unlock()
-    {
-        ::LeaveCriticalSection(&amp;cs);
-    }
-private:
-    CRITICAL_SECTION cs;
-};
-</code></pre>
-<pre><code class="C++">class Singleton
-{
-public:
-    ~Singleton();
-    static Singleton* s_pInstance;
-    static Singleton* getInstance();
-private:
-    Singleton();
-    // other members......
-};
-
-Singleton* Singleton::s_pInstance = nullptr;
-
-Singleton::Singleton() {}
-
-Singleton::~Singleton()
-{
-    if (nullptr != Singleton::s_pInstance)
-    {
-        delete Singleton::s_pInstance;
-        Singleton::s_pInstance = nullptr;
-    }
-}
-
-Singleton* Singleton::getInstance()
-{
-    LockBase lockBase;
-    lockBase.lock();
-    if (nullptr == Singleton::s_pInstance)
-        Singleton::s_pInstance = new Singleton();
-    lockBase.unlock();
-    return Singleton::s_pInstance;
-}
-</code></pre>
-<p>very nice ! 😀 等等！其实这个锁的范围有点大了，我们可以再次优化，缩小范围</p>
-<pre><code class="C++">Singleton* Singleton::getInstance()
-{
-    if (nullptr == Singleton::s_pInstance)
-    {
-        LockBase lockBase;
-        lockBase.lock();
-        if (nullptr == Singleton::s_pInstance)
-            Singleton::s_pInstance = new Singleton();
-        lockBase.unlock();
-    }
-    return Singleton::s_pInstance;
-}
-</code></pre>
+<p>理清三点后奉上本人渣码<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ~Singleton();</span><br><span class="line">    <span class="keyword">static</span> Singleton* s_pInstance;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> Singleton* <span class="title">getInstance</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Singleton();</span><br><span class="line">    <span class="comment">// other members......</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// C++中仅有静态整形常量才可于类内初始化，否则导致所有实例均含该静态成员</span></span><br><span class="line">Singleton* Singleton::s_pInstance = <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line">Singleton::Singleton() &#123;&#125;</span><br><span class="line"></span><br><span class="line">Singleton::~Singleton()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">nullptr</span> != Singleton::s_pInstance)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">delete</span> Singleton::s_pInstance;</span><br><span class="line">        Singleton::s_pInstance = <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Singleton* Singleton::getInstance()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">nullptr</span> == Singleton::s_pInstance)</span><br><span class="line">        Singleton::s_pInstance = <span class="keyword">new</span> Singleton();</span><br><span class="line">    <span class="keyword">return</span> Singleton::s_pInstance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>看似完美，却木有考虑多线程下同时执行 <code>if (nullptr == Singleton::s_pInstance)</code> 情况，加锁加锁……<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用window API操控锁</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LockBase</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    LockBase()</span><br><span class="line">    &#123;</span><br><span class="line">        ::InitializeCriticalSection(&amp;cs);</span><br><span class="line">    &#125;</span><br><span class="line">    ~LockBase()</span><br><span class="line">    &#123;</span><br><span class="line">        ::DeleteCriticalSection(&amp;cs);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">lock</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        ::EnterCriticalSection(&amp;cs);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">unlock</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        ::LeaveCriticalSection(&amp;cs);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    CRITICAL_SECTION cs;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ~Singleton();</span><br><span class="line">    <span class="keyword">static</span> Singleton* s_pInstance;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> Singleton* <span class="title">getInstance</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Singleton();</span><br><span class="line">    <span class="comment">// other members......</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Singleton* Singleton::s_pInstance = <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line">Singleton::Singleton() &#123;&#125;</span><br><span class="line"></span><br><span class="line">Singleton::~Singleton()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">nullptr</span> != Singleton::s_pInstance)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">delete</span> Singleton::s_pInstance;</span><br><span class="line">        Singleton::s_pInstance = <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Singleton* Singleton::getInstance()</span><br><span class="line">&#123;</span><br><span class="line">    LockBase lockBase;</span><br><span class="line">    lockBase.lock();</span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">nullptr</span> == Singleton::s_pInstance)</span><br><span class="line">        Singleton::s_pInstance = <span class="keyword">new</span> Singleton();</span><br><span class="line">    lockBase.unlock();</span><br><span class="line">    <span class="keyword">return</span> Singleton::s_pInstance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>very nice ! 😀 等等！其实这个锁的范围有点大了，我们可以再次优化，缩小范围<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Singleton* Singleton::getInstance()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">nullptr</span> == Singleton::s_pInstance)</span><br><span class="line">    &#123;</span><br><span class="line">        LockBase lockBase;</span><br><span class="line">        lockBase.lock();</span><br><span class="line">        <span class="keyword">if</span> (<span class="literal">nullptr</span> == Singleton::s_pInstance)</span><br><span class="line">            Singleton::s_pInstance = <span class="keyword">new</span> Singleton();</span><br><span class="line">        lockBase.unlock();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Singleton::s_pInstance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>不但缩小范围，而且提升效率，感觉很棒棒(๑•̀ㅂ•́)و✧ 对照下书本<br>有木有搞错！结果书上说还有更加优秀的解法=_=</p>
-<h2 id="力荐解法一：利用静态构造函数"><a href="#力荐解法一：利用静态构造函数" class="headerlink" title="力荐解法一：利用静态构造函数"></a>力荐解法一：利用静态构造函数</h2><p>静态构造函数：定义类时仅自动执行一次的函数<br>可能要让您失望了，书中使用C#，而C++没有静态构造函数！😂<br>先看看书中C#神级代码</p>
-<pre><code class="CS">public class Singleton
-{
-    private static Singleton instance = new Singleton();
-    public static Singleton getInstance()
-    {
-        return instance;
-    }
-    // other members......
-};
-</code></pre>
-<p>再看看 <code>C++</code> 模拟代码</p>
-<pre><code class="C++">class Singleton
-{
-public:
-    ~Singleton();
-    static Singleton* s_pInstance;
-    static Singleton* getInstance();
-private:
-    Singleton();
-    // other members......
-};
-
-Singleton* Singleton::s_pInstance = new Singleton();
-
-Singleton* Singleton::getInstance()
-{
-    return Singleton::s_pInstance;
-}
-</code></pre>
+<h2 id="力荐解法一：利用静态构造函数"><a href="#力荐解法一：利用静态构造函数" class="headerlink" title="力荐解法一：利用静态构造函数"></a>力荐解法一：利用静态构造函数</h2><p>静态构造函数：定义类时仅自动执行一次的函数<br>可能要让您失望了，书中使用C#，而C++没有静态构造函数！😂<br>先看看书中C#神级代码<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Singleton</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// other members......</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>再看看 <code>C++</code> 模拟代码<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ~Singleton();</span><br><span class="line">    <span class="keyword">static</span> Singleton* s_pInstance;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> Singleton* <span class="title">getInstance</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Singleton();</span><br><span class="line">    <span class="comment">// other members......</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Singleton* Singleton::s_pInstance = <span class="keyword">new</span> Singleton();</span><br><span class="line"></span><br><span class="line">Singleton* Singleton::getInstance()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> Singleton::s_pInstance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>其实是在全局域中直接设定，略显牵强😝</p>
-<h2 id="力荐解法二：实现按需创建实例"><a href="#力荐解法二：实现按需创建实例" class="headerlink" title="力荐解法二：实现按需创建实例"></a>力荐解法二：实现按需创建实例</h2><p>解法一中过早创建实例占用内存，所以可用高级语言中 <strong>类仅在使用时载入</strong> 的特性改进代码<br>C++无法实现此方法，以下依旧是书中C#神级代码</p>
-<pre><code class="CS">public class Singleton
-{
-    public static Singleton getInstance()
-    {
-        return Nested.instance;
-    }
-
-    class Nested
-    {
-        // internal表示该变量仅可在同项目内调用
-        internal static Singleton instance = new Singleton();
-    };
-
-    // other members......
-};
-</code></pre>
+<h2 id="力荐解法二：实现按需创建实例"><a href="#力荐解法二：实现按需创建实例" class="headerlink" title="力荐解法二：实现按需创建实例"></a>力荐解法二：实现按需创建实例</h2><p>解法一中过早创建实例占用内存，所以可用高级语言中 <strong>类仅在使用时载入</strong> 的特性改进代码<br>C++无法实现此方法，以下依旧是书中C#神级代码<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Singleton</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Nested.instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">Nested</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// internal表示该变量仅可在同项目内调用</span></span><br><span class="line">        <span class="keyword">internal</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// other members......</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <h1 id="本题扩展"><a href="#本题扩展" class="headerlink" title="本题扩展"></a>本题扩展</h1><p>实现可继承单例，派生类都只能产生一个实例<br>可以在单例类中使用指针数组判断对应子类标记是否已存在，若存在直接返回，反之创建子类，应加锁实现</p>
 
         

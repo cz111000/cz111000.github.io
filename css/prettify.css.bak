@@ -16,8 +16,8 @@ pre{
     padding-right: 0;
 }
 
-#post-content .prettyprint ol,#post-content .prettyprint ul{
-    padding-left: 0;
+#post-content ol,#post-content ul{
+    padding-left: 0px;
     font-size: 1rem;
     margin: 0;
 }
