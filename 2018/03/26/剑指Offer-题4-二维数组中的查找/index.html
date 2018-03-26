@@ -245,7 +245,7 @@
 
     
         <meta property="article:published_time" content="Mon Mar 26 2018 09:53:19 GMT+0800">
-        <meta property="article:modified_time" content="Mon Mar 26 2018 17:31:35 GMT+0800">
+        <meta property="article:modified_time" content="Mon Mar 26 2018 17:59:45 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -268,7 +268,7 @@
     "mainEntityOfPage": "https://cz111000.github.io/2018/03/26/剑指Offer-题4-二维数组中的查找/index.html",
     "headline": "剑指Offer-题4-二维数组中的查找",
     "datePublished": "Mon Mar 26 2018 09:53:19 GMT+0800",
-    "dateModified": "Mon Mar 26 2018 17:31:35 GMT+0800",
+    "dateModified": "Mon Mar 26 2018 17:59:45 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Orange",
@@ -502,12 +502,14 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <h1 id="题目：二维数组中的查找"><a href="#题目：二维数组中的查找" class="headerlink" title="题目：二维数组中的查找"></a>题目：二维数组中的查找</h1><p>在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
-<h1 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h1><p>可以肯定的是直接遍历不可取🙄。之后想到跳步判断，先走斜线，若此时数值大于查找数则往左或往右倒退？往左之后该往上还是往下？继而联想到A*路径查找算法……<br>naive ! 书中指出<strong>考虑每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序</strong>。问题变得困难是因为考虑数组中中间位置的数，此时该位置含有两个排序规律；不如考虑特殊位置-顶角的数呢？<br>二维数组有四个顶角，选择其中某个顶角分析。举例分析：<br>有如下二维数组，查找数字 <code>7</code><br>$$<br>\begin{bmatrix}<br>    1 &amp; 2 &amp; 8 &amp; 9 \\<br>    2 &amp; 4 &amp; 9 &amp; 12 \\<br>    4 &amp; 7 &amp; 10 &amp; 13 \\<br>    6 &amp; 8 &amp; 11 &amp; 15 \\<br>\end{bmatrix}<br>$$<br>对四个顶点分情况讨论：</p>
+<h1 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h1><p>可以肯定的是直接遍历不可取🙄。之后想到跳步判断，先走斜线，若此时数值大于查找数则往左或往右倒退？往左之后该往上还是往下？继而联想到A*路径查找算法……<br>naive ! 书中指出<strong>考虑每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序</strong>。问题变得困难是因为考虑数组中中间位置的数，此时该位置含有两个排序规律；不如考虑特殊位置-顶角的数呢？<br>二维数组有四个顶角，选择其中某个顶角分析。举例分析：<br>有如下二维数组，查找数字 <code>7</code><br>$$<br>\begin{bmatrix}<br>    1 &amp; 2 &amp; 8 &amp; 9 \\<br>    2 &amp; 4 &amp; 9 &amp; 12 \\<br>    4 &amp; 7 &amp; 10 &amp; 13 \\<br>    6 &amp; 8 &amp; 11 &amp; 15 \\<br>\end{bmatrix}<br>$$<br>对四个顶点分情况讨论(↓、→、↘表示增大方向)：</p>
 <ul>
-<li>考虑左上角则有规律(↓、→、↘表示增大方向)<br>$$<br>\begin{bmatrix}<br>  ● &amp; \rightarrow &amp; \rightarrow &amp; \rightarrow \\<br>  \downarrow &amp; \searrow &amp; \downarrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \searrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \rightarrow &amp; \searrow \\<br>\end{bmatrix}<br>$$</li>
-<li>考虑右下角则有规律(↑、←、↖表示减小方向)<br>$$<br>\begin{bmatrix}<br>  \nwarrow &amp; \leftarrow &amp; \leftarrow &amp; \uparrow \\<br>  \uparrow &amp; \nwarrow &amp; \leftarrow &amp; \uparrow \\<br>  \uparrow &amp; \uparrow &amp; \nwarrow &amp; \uparrow \\<br>  \leftarrow &amp; \leftarrow &amp; \leftarrow &amp; ● \\<br>\end{bmatrix}<br>$$</li>
-<li>考虑右上角则有规律(↓表示增大方向，←、↙表示减小方向)<br>$$<br>\begin{bmatrix}<br>  \leftarrow &amp; \leftarrow &amp; \leftarrow &amp; ● \\<br>  \leftarrow &amp; \leftarrow &amp; \swarrow &amp; \downarrow \\<br>  \leftarrow &amp; \swarrow &amp; \downarrow &amp; \downarrow \\<br>  \swarrow &amp; \downarrow &amp; \downarrow &amp; \downarrow \\<br>\end{bmatrix}<br>$$</li>
-<li>考虑左下角则有规律(↑表示减小方向，→、↗表示增大方向)<br>$$<br>\begin{bmatrix}<br>  \uparrow &amp; \uparrow &amp; \uparrow &amp; \nearrow \\<br>  \uparrow &amp; \uparrow &amp; \nearrow &amp; \rightarrow \\<br>  \uparrow &amp; \nearrow &amp; \rightarrow &amp; \rightarrow \\<br>  ● &amp; \rightarrow &amp; \rightarrow &amp; \rightarrow \\<br>\end{bmatrix}<br>$$</li>
+<li>考虑左上角则有规律：对于左上角有三个出度<br>$$<br>\begin{bmatrix}<br>  ● &amp; \rightarrow &amp; \rightarrow &amp; \rightarrow \\<br>  \downarrow &amp; \searrow &amp; \downarrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \searrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \rightarrow &amp; \searrow \\<br>\end{bmatrix}<br>$$</li>
+<li>考虑右下角则有规律：对于右下角有三个入度<br>$$<br>\begin{bmatrix}<br>  ＋ &amp; \rightarrow &amp; \rightarrow &amp; \rightarrow \\<br>  \downarrow &amp; \searrow &amp; \downarrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \searrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \rightarrow &amp; ● \\<br>\end{bmatrix}<br>$$</li>
+<li>考虑右上角则有规律：<strong>对于右上角有一个入度和一个出度</strong><br>$$<br>\begin{bmatrix}<br>  ＋ &amp; \rightarrow &amp; \rightarrow &amp; ● \\<br>  \downarrow &amp; \searrow &amp; \downarrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \searrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \rightarrow &amp; \searrow \\<br>\end{bmatrix}<br>$$</li>
+<li>考虑左下角则有规律：<strong>对于左下角有一个入度和一个出度</strong><br>$$<br>\begin{bmatrix}<br>  ＋ &amp; \rightarrow &amp; \rightarrow &amp; \rightarrow \\<br>  \downarrow &amp; \searrow &amp; \downarrow &amp; \downarrow \\<br>  \downarrow &amp; \rightarrow &amp; \searrow &amp; \downarrow \\<br>  ● &amp; \rightarrow &amp; \rightarrow &amp; \searrow \\<br>\end{bmatrix}<br>$$<br>“柿子要捡软的捏”，当然选一出一入的突破口啊！例如选择右上角数字 <code>9</code>，则 <code>9 &gt; 7</code> 说明第四列均大于 <code>7</code>，故判断数组范围缩小为<br>$$<br>\begin{bmatrix}<br>  1 &amp; 2 &amp; 8 \\<br>  2 &amp; 4 &amp; 9 \\<br>  4 &amp; 7 &amp; 10 \\<br>  6 &amp; 8 &amp; 11 \\<br>\end{bmatrix}<br>$$<br>继续选择右上角数字 <code>8</code>，则 <code>8 &gt; 7</code> 说明第四列均大于 <code>8</code>，故判断数组范围又缩小<br>$$<br>\begin{bmatrix}<br>  1 &amp; 2 \\<br>  2 &amp; 4 \\<br>  4 &amp; 7 \\<br>  6 &amp; 8 \\<br>\end{bmatrix}<br>$$<br>继续选择右上角数字 <code>2</code>，则 <code>2 &lt; 7</code> 说明第一行均小于 <code>8</code>，故判断数组范围双缩小<br>$$<br>\begin{bmatrix}<br>  2 &amp; 4 \\<br>  4 &amp; 7 \\<br>  6 &amp; 8 \\<br>\end{bmatrix}<br>$$<br>继续选择右上角数字 <code>4</code>，则 <code>4 &lt; 7</code> 说明第一行均小于 <code>8</code>，故判断数组范围叒缩小<br>$$<br>\begin{bmatrix}<br>  4 &amp; 7 \\<br>  6 &amp; 8 \\<br>\end{bmatrix}<br>$$<br>选择右上角数字 <code>7</code>，则寻找完毕😄。转化为代码如下<pre><code class="C++">
+</code></pre>
+</li>
 </ul>
 
         
@@ -970,6 +972,26 @@ It will not impact the appearance and can give developers a lot of support :)
 </script>
 
 <!-- MathJax Load-->
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+    <script src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
 
 
 <!-- Bing Background -->
