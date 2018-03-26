@@ -245,7 +245,7 @@
 
     
         <meta property="article:published_time" content="Mon Mar 26 2018 09:53:19 GMT+0800">
-        <meta property="article:modified_time" content="Mon Mar 26 2018 12:19:04 GMT+0800">
+        <meta property="article:modified_time" content="Mon Mar 26 2018 12:37:10 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -268,7 +268,7 @@
     "mainEntityOfPage": "https://cz111000.github.io/2018/03/26/剑指Offer-题4-二维数组中的查找/index.html",
     "headline": "剑指Offer-题4-二维数组中的查找",
     "datePublished": "Mon Mar 26 2018 09:53:19 GMT+0800",
-    "dateModified": "Mon Mar 26 2018 12:19:04 GMT+0800",
+    "dateModified": "Mon Mar 26 2018 12:37:10 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Orange",
@@ -502,7 +502,7 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <h1 id="题目：二维数组中的查找"><a href="#题目：二维数组中的查找" class="headerlink" title="题目：二维数组中的查找"></a>题目：二维数组中的查找</h1><p>在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
-<h1 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h1><p>可以肯定的是直接遍历不可取🙄。之后想到跳步判断，先走斜线，若此时数值大于查找数则往左或往右倒退？往左之后该往上还是往下？继而联想到A*路径查找算法……<br>naive ! 书中指出<strong>考虑每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序</strong>。问题变得困难是因为考虑数组中未知位置的数，不如考虑特殊位置-顶角的数呢？<br>二维数组有四个顶角，选择其中某个顶角分析。举例分析：<br>有如下二维数组，查找数字7<br>$1$<br>$$\begin{matrix}<br>1&amp;2&amp;8&amp;9\<br>2&amp;4&amp;9&amp;12\<br>4&amp;7&amp;10&amp;13\<br>6&amp;8&amp;11&amp;15\<br>\end{matrix}$$</p>
+<h1 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h1><p>可以肯定的是直接遍历不可取🙄。之后想到跳步判断，先走斜线，若此时数值大于查找数则往左或往右倒退？往左之后该往上还是往下？继而联想到A*路径查找算法……<br>naive ! 书中指出<strong>考虑每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序</strong>。问题变得困难是因为考虑数组中未知位置的数，不如考虑特殊位置-顶角的数呢？<br>二维数组有四个顶角，选择其中某个顶角分析。举例分析：<br>有如下二维数组，查找数字 <code>7</code><br>$$<br>\begin{bmatrix}<br>    1 &amp; 2 &amp; 8 &amp; 9 \\<br>    2 &amp; 4 &amp; 9 &amp; 12 \\<br>    4 &amp; 7 &amp; 10 &amp; 13 \\<br>    6 &amp; 8 &amp; 11 &amp; 15 \\<br>\end{bmatrix}<br>$$</p>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
