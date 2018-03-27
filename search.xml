@@ -6,7 +6,7 @@
       <title>剑指Offer-题5-替换空格</title>
       <link href="/2018/03/27/%E5%89%91%E6%8C%87Offer-%E9%A2%985-%E6%9B%BF%E6%8D%A2%E7%A9%BA%E6%A0%BC/"/>
       <url>/2018/03/27/%E5%89%91%E6%8C%87Offer-%E9%A2%985-%E6%9B%BF%E6%8D%A2%E7%A9%BA%E6%A0%BC/</url>
-      <content type="html"><![CDATA[<h1 id="题目：替换空格"><a href="#题目：替换空格" class="headerlink" title="题目：替换空格"></a>题目：替换空格</h1><p>请实现一个函数，把原字符串中的每个空格替换成“%20”，例如输入“We are happy”,则输出“We%20are%20happy”。</p><h1 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h1><p>本题考查字符串替换，且在原字符串上改动。若考虑<strong>从头至尾遍历字符串进行字符后移，则产生多次字段移动，时间复杂度为O(n^2)。</strong><br>考虑从尾至头遍历字符串进行字符后移？经书中点拨，此法甚妙😂！<strong>从尾至头仅产生一次字段移动，虽须预先测量移动距离，但仅遍历2n次，时间复杂度为O(n)。</strong></p>]]></content>
+      <content type="html"><![CDATA[<h1 id="题目：替换空格"><a href="#题目：替换空格" class="headerlink" title="题目：替换空格"></a>题目：替换空格</h1><p>请实现一个函数，把原字符串中的每个空格替换成“%20”，例如输入“We are happy”,则输出“We%20are%20happy”。</p><h1 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h1><p>本题考查字符串替换，且在原字符串上改动。若考虑<strong>从头至尾遍历字符串进行字符后移，则产生多次字段移动，时间复杂度为O(n^2)。</strong><br>考虑从尾至头遍历字符串进行字符后移？经书中点拨，此法甚妙😂！<strong>从尾至头仅产生一次字段移动，虽<em>须预先测量移动距离</em>，但仅遍历2n次，时间复杂度为O(n)。</strong></p>]]></content>
       
       <categories>
           
