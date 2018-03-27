@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cz111000.github.io/"/>
-  <updated>2018-03-27T07:52:48.479Z</updated>
+  <updated>2018-03-27T09:35:22.218Z</updated>
   <id>https://cz111000.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://cz111000.github.io/2018/03/27/%E5%89%91%E6%8C%87Offer-%E9%A2%985-%E6%9B%BF%E6%8D%A2%E7%A9%BA%E6%A0%BC/"/>
     <id>https://cz111000.github.io/2018/03/27/剑指Offer-题5-替换空格/</id>
     <published>2018-03-27T05:17:49.000Z</published>
-    <updated>2018-03-27T07:52:48.479Z</updated>
+    <updated>2018-03-27T09:35:22.218Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,7 @@
       
         
         
-          &lt;h1 id=&quot;题目：替换空格&quot;&gt;&lt;a href=&quot;#题目：替换空格&quot; class=&quot;headerlink&quot; title=&quot;题目：替换空格&quot;&gt;&lt;/a&gt;题目：替换空格&lt;/h1&gt;&lt;p&gt;请实现一个函数，把原字符串中的每个空格替换成“%20”，例如输入“We are
+          &lt;h1 id=&quot;题目：替换空格&quot;&gt;&lt;a href=&quot;#题目：替换空格&quot; class=&quot;headerlink&quot; title=&quot;题目：替换空格&quot;&gt;&lt;/a&gt;题目：替换空格&lt;/h1&gt;&lt;h2 id=&quot;题目一：替换空格&quot;&gt;&lt;a href=&quot;#题目一：替换空格&quot;
         
       
     
@@ -39,6 +39,8 @@
     
     
       <category term="剑指Offer" scheme="https://cz111000.github.io/tags/%E5%89%91%E6%8C%87Offer/"/>
+    
+      <category term="数组" scheme="https://cz111000.github.io/tags/%E6%95%B0%E7%BB%84/"/>
     
       <category term="替换" scheme="https://cz111000.github.io/tags/%E6%9B%BF%E6%8D%A2/"/>
     
