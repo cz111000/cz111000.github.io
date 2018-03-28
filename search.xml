@@ -247,6 +247,13 @@
   
     
     <entry>
+      <title>About</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
+      <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>鄙人不才，小博供阅</p><h2 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h2><ul><li>QQ：<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2506649223&amp;site=qq&amp;menu=yes" target="_blank" rel="noopener">2506649223</a></li><li>Email：<a href="mailto:cz335360@gmail.com" target="_blank" rel="noopener">cz335360@gmail.com</a></li></ul>]]></content>
+    </entry>
+    
+    <entry>
       <title>links</title>
       <link href="/links/index.html"/>
       <url>/links/index.html</url>
@@ -258,13 +265,6 @@
       <link href="/tags/index.html"/>
       <url>/tags/index.html</url>
       <content type="html"><![CDATA[]]></content>
-    </entry>
-    
-    <entry>
-      <title>About</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
-      <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>鄙人不才，小博供阅</p><h2 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h2><ul><li>QQ：<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2506649223&amp;site=qq&amp;menu=yes" target="_blank" rel="noopener">2506649223</a></li><li>Email：<a href="mailto:cz335360@gmail.com" target="_blank" rel="noopener">cz335360@gmail.com</a></li></ul>]]></content>
     </entry>
     
   
