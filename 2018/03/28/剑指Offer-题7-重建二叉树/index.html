@@ -45,7 +45,7 @@
     
     <title>
         
-            计算机图形学-直线 | 
+            剑指Offer-题7-重建二叉树 | 
         
         Orange&#39;s Blog
     </title>
@@ -56,7 +56,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="Orange&#39;s Blog">
-    <meta name="keywords" content="Orange,Blog,图形学,直线,绘制">
+    <meta name="keywords" content="Orange,Blog,剑指Offer,二叉树">
     <meta name="theme-color" content="#FFA500">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -217,7 +217,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Orange&#39;s Blog">
-    <meta name="msapplication-starturl" content="https://cz111000.github.io/2018/03/24/计算机图形学-直线/">
+    <meta name="msapplication-starturl" content="https://cz111000.github.io/2018/03/28/剑指Offer-题7-重建二叉树/">
     <meta name="msapplication-navbutton-color" content="#FFA500">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Orange&#39;s Blog">
@@ -236,16 +236,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="https://cz111000.github.io/2018/03/24/计算机图形学-直线/">
+    <meta property="og:url" content="https://cz111000.github.io/2018/03/28/剑指Offer-题7-重建二叉树/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="计算机图形学-直线 | Orange&#39;s Blog">
+    <meta property="og:title" content="剑指Offer-题7-重建二叉树 | Orange&#39;s Blog">
     <meta property="og:image" content="https://u.cubeupload.com/orange/logo.png">
     <meta property="og:description" content="Orange&#39;s Blog">
-    <meta property="og:article:tag" content="图形学"> <meta property="og:article:tag" content="直线"> <meta property="og:article:tag" content="绘制"> 
+    <meta property="og:article:tag" content="剑指Offer"> <meta property="og:article:tag" content="二叉树"> 
 
     
-        <meta property="article:published_time" content="Sat Mar 24 2018 08:52:25 GMT+0800">
-        <meta property="article:modified_time" content="Mon Mar 26 2018 12:26:35 GMT+0800">
+        <meta property="article:published_time" content="Wed Mar 28 2018 15:28:18 GMT+0800">
+        <meta property="article:modified_time" content="Wed Mar 28 2018 19:12:25 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -253,7 +253,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="https://cz111000.github.io/2018/03/24/计算机图形学-直线/index.html" />
+        <link rel="canonical" href="https://cz111000.github.io/2018/03/28/剑指Offer-题7-重建二叉树/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -265,10 +265,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "https://cz111000.github.io/2018/03/24/计算机图形学-直线/index.html",
-    "headline": "计算机图形学-直线",
-    "datePublished": "Sat Mar 24 2018 08:52:25 GMT+0800",
-    "dateModified": "Mon Mar 26 2018 12:26:35 GMT+0800",
+    "mainEntityOfPage": "https://cz111000.github.io/2018/03/28/剑指Offer-题7-重建二叉树/index.html",
+    "headline": "剑指Offer-题7-重建二叉树",
+    "datePublished": "Wed Mar 28 2018 15:28:18 GMT+0800",
+    "dateModified": "Wed Mar 28 2018 19:12:25 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Orange",
@@ -286,7 +286,7 @@
             "url": "https://u.cubeupload.com/orange/logo.png"
         }
     },
-    "keywords": ",图形学,直线,绘制Orange,Blog",
+    "keywords": ",剑指Offer,二叉树Orange,Blog",
     "description": "Orange&#39;s Blog",
 }
 </script>
@@ -352,7 +352,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:auto;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#直线绘制算法"><span class="post-toc-number">1.</span> <span class="post-toc-text">直线绘制算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#为何研究直线绘制算法？"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">为何研究直线绘制算法？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#DDA（DIgital-differential-analyzer）算法"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">DDA（DIgital differential analyzer）算法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#逐点比较算法（插补法）"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">逐点比较算法（插补法）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Bresenham算法"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Bresenham算法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">参考资料</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#题目：重建二叉树"><span class="post-toc-number">1.</span> <span class="post-toc-text">题目：重建二叉树</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解析"><span class="post-toc-number">2.</span> <span class="post-toc-text">解析</span></a></li></ol>
     </ul>
     
 
@@ -372,10 +372,10 @@
     <!-- Paradox Post Header -->
     
         <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://carrier.huawei.com/~/media/CNBG/Images/Solutions/MBB/spectrum/%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98refarming800600.jpg)">
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://img.blog.csdn.net/20151123175554677)">
     
             <p class="article-headline-p">
-                计算机图形学-直线
+                剑指Offer-题7-重建二叉树
             </p>
         </div>
 
@@ -394,7 +394,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Orange</strong>
-        <span>3月 24, 2018</span>
+        <span>3月 28, 2018</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -416,7 +416,7 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="https://pan.baidu.com/share/qrcode?w=246&h=246&url=https://cz111000.github.io/2018/03/24/计算机图形学-直线/">
+        <img src="https://pan.baidu.com/share/qrcode?w=246&h=246&url=https://cz111000.github.io/2018/03/28/剑指Offer-题7-重建二叉树/">
     
 </ul>
 
@@ -430,7 +430,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/图形学/">图形学</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/直线/">直线</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/绘制/">绘制</a>
+        <a class="post_tag-link" href="/tags/二叉树/">二叉树</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/剑指Offer/">剑指Offer</a>
     </ul>
     
 
@@ -449,7 +449,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=计算机图形学-直线&url=https://cz111000.github.io/2018/03/24/计算机图形学-直线/index.html&pic=https://cz111000.github.iohttps://u.cubeupload.com/orange/logo.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=剑指Offer-题7-重建二叉树&url=https://cz111000.github.io/2018/03/28/剑指Offer-题7-重建二叉树/index.html&pic=https://cz111000.github.iohttps://u.cubeupload.com/orange/logo.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -458,7 +458,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=计算机图形学-直线&url=https://cz111000.github.io/2018/03/24/计算机图形学-直线/index.html&via=Orange" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=剑指Offer-题7-重建二叉树&url=https://cz111000.github.io/2018/03/28/剑指Offer-题7-重建二叉树/index.html&via=Orange" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -467,7 +467,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://cz111000.github.io/2018/03/24/计算机图形学-直线/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://cz111000.github.io/2018/03/28/剑指Offer-题7-重建二叉树/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -482,7 +482,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Orange&#39;s Blog&title=计算机图形学-直线&summary=Orange&#39;s Blog&pics=https://cz111000.github.iohttps://u.cubeupload.com/orange/logo.png&url=https://cz111000.github.io/2018/03/24/计算机图形学-直线/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Orange&#39;s Blog&title=剑指Offer-题7-重建二叉树&summary=Orange&#39;s Blog&pics=https://cz111000.github.iohttps://u.cubeupload.com/orange/logo.png&url=https://cz111000.github.io/2018/03/28/剑指Offer-题7-重建二叉树/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -501,122 +501,35 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="直线绘制算法"><a href="#直线绘制算法" class="headerlink" title="直线绘制算法"></a>直线绘制算法</h1><p><em>本文介绍内容归属计算机图形学范畴，基于二维平面直角坐标系绘制</em></p>
-<hr>
-<h2 id="为何研究直线绘制算法？"><a href="#为何研究直线绘制算法？" class="headerlink" title="为何研究直线绘制算法？"></a>为何研究直线绘制算法？</h2><p>现实世界绘制直线(段)只靠直尺和笔，而计算机显示图形需点亮屏幕像素点——绘点成线(段)</p>
-<p>如同一连串英文句点绘制而成的分割线，效果如下（<em>离散化的近似表现</em>，假使放大页面会出现明显间隙）</p>
-<p>…………………………………………………………………….</p>
-<p>可惜直线不只是水平线，还包括斜线吖！（QAQ）</p>
-<p>为此，图形学者致力寻找高效绘点算法 (\掌声)。我们将讨论以下三种直线绘制算法：</p>
-<ol>
-<li>DDA算法<ul>
-<li>算法思想<strong>简单</strong></li>
-<li>直线平滑性差，效率较高</li>
-</ul>
-</li>
-<li>逐点比较算法（亦称插补法）<ul>
-<li><strong>工业常用</strong>算法</li>
-<li>直线平滑性好，效率较低</li>
-</ul>
-</li>
-<li>Breseham算法<ul>
-<li><strong>高效</strong></li>
-<li>兼并DDA算法与插补法思想</li>
-</ul>
-</li>
-</ol>
-<h2 id="DDA（DIgital-differential-analyzer）算法"><a href="#DDA（DIgital-differential-analyzer）算法" class="headerlink" title="DDA（DIgital differential analyzer）算法"></a>DDA（DIgital differential analyzer）算法</h2><p>聪明的数学家早将直线用数学公式表示出来 <strong>y = k · x + b</strong></p>
-<p>求解两个未知量 <code>k、b</code> 我们只需y知晓两组点数据即可（两点绘制一条直线），那么我们就用线段的起点和终点代入公式吧。（^_^）</p>
-<p><code>起点p0(0, 0) 终点p6(6, 4) -&gt; k = 1.5，b = 0</code>。观察发现当 <code>x2 = x1 + 1</code> 时，<code>y2 = y1 + k</code></p>
-<p>计算机像素单位长度为1（即像素点数据均为整数），我们凑巧将 y2 取整成 y2’ 即得需点亮像素点位置 <code>(x2, y2&#39;)</code></p>
-<p>依此类推，<code>x3 = x2 + 1，y3 = y2 + k，y3&#39; = 取整y3</code> ……</p>
-<p>大功告成？哦不！我们还能优化一下效率</p>
+        <h1 id="题目：重建二叉树"><a href="#题目：重建二叉树" class="headerlink" title="题目：重建二叉树"></a>题目：重建二叉树</h1><p>输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历结果中都不含重复的数字。例如输入前序遍历序列 <code>{1,2,4,7,3,5,6,8}</code> 和中序遍历序列 <code>{4,7,2,1,5,3,8,6}</code> ，则重建如图二叉树并输出它的头节点。<br><img src="https://img.vim-cn.com/f7/2158fb00faee41c54508719da32403a6e66671.jpg" alt="二叉树"><br>二叉树的定义如下：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">BinaryTreeNode</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    BinaryTreeNode* left;</span><br><span class="line">    BinaryTreeNode* right;</span><br><span class="line">    BinaryTreeNode(<span class="keyword">int</span> x):val(x),left(<span class="literal">NULL</span>),right(<span class="literal">NULL</span>)&#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h1 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h1><p>二叉树定义：每个节点最多只能有两个子节点的树。又分为</p>
 <ul>
-<li><p>当直线斜率 <code>k &lt; 1</code> 时，我们以x为主，采用 <code>x2 = x1 + 1</code> 的步进方式，加快水平方向延伸速度</p>
-</li>
-<li><p>当直线斜率 <code>k &gt; 1</code> 时，我们以y为主，采用 <code>y2 = y1 + 1</code> 的步进方式，加快垂直方向延伸速度</p>
-</li>
+<li>最大堆：根节点值最大</li>
+<li>最小堆：根节点值最小</li>
+<li>搜索树：左子节点值小于或等于根节点值，右子节点值大于或等于根节点值</li>
+<li>红黑树：任意节点的左右子树中最长路径的长度不会超过最短路径的两倍</li>
 </ul>
-<p><strong><em>取整步骤需要对小数四舍五入，对效率略有影响</em></strong></p>
-<p>最终代码如下</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	使用openGL的glut库</span></span><br><span class="line"><span class="comment">	#include &lt;gl\glut.h&gt;</span></span><br><span class="line"><span class="comment">	#include &lt;math.h&gt;</span></span><br><span class="line"><span class="comment">	x1 = 0，y1 = 0</span></span><br><span class="line"><span class="comment">	x2 = 6，y2 = 4</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">drawLineDDA</span><span class="params">(GLint x1, GLint y1, GLint x2, GLint y2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	glColor3f(<span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);	<span class="comment">//置颜色为红</span></span><br><span class="line">	<span class="keyword">int</span> dx = x2 - x1;</span><br><span class="line">	<span class="keyword">int</span> dy = y2 - y1;</span><br><span class="line">	dx = <span class="built_in">abs</span>(dx);</span><br><span class="line">	dy = <span class="built_in">abs</span>(dy);</span><br><span class="line">	<span class="keyword">int</span> step = dx &gt; dy ? dx : dy;	<span class="comment">//判断k与1的关系，若dx大，水平方向延伸为主；若dy大，垂直方向延伸为主</span></span><br><span class="line">	<span class="keyword">double</span> xin = dx / step;	<span class="comment">//x轴步长</span></span><br><span class="line">	<span class="keyword">double</span> yin = dy / (<span class="keyword">double</span>)step;	<span class="comment">//y轴步长</span></span><br><span class="line">	<span class="keyword">double</span> x = x1;</span><br><span class="line">	<span class="keyword">double</span> y = y1;</span><br><span class="line">	glBegin(GL_POINTS);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= step; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		glVertex2f(x / <span class="number">10.0</span>, <span class="keyword">int</span>(y + <span class="number">0.5</span>) / <span class="number">10.0</span>);	<span class="comment">//int(y + 0.5)将y值四舍五入，绘于标准化坐标系，故除以10.0</span></span><br><span class="line">		x = x + xin;</span><br><span class="line">		y = y + yin;</span><br><span class="line">	&#125;</span><br><span class="line">	glEnd();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>绘制结果如图（补上黑色网格，蓝线为预期效果，绿点为可点亮像素点，白色部分代表像素空隙（放大效果））</p>
-<p><img src="https://raw.githubusercontent.com/cz111000/DrawLine/master/DDA.PNG" alt="DDA算法效果图"></p>
-<h2 id="逐点比较算法（插补法）"><a href="#逐点比较算法（插补法）" class="headerlink" title="逐点比较算法（插补法）"></a>逐点比较算法（插补法）</h2><p>此算法以像素点为主，<strong>第一象限</strong>前提下考虑<strong>右方向</strong>和<strong>上方向</strong>像素点与直线位置，二选一点亮</p>
-<p>同样取 <code>起点p0(0, 0) 终点pn(6, 4)</code> 代入公式 <strong>y = k · x + b</strong> 得 <code>k = 1.5，b = 0</code></p>
-<p>当像素点 <code>p</code> 在直线上方时 <code>yp / xp &gt; (y6 - y0) / (x6 - x0)</code>，即 <code>yp * (x6 - x0) - (y6 - y0) * xp &gt; 0</code></p>
-<p>当像素点 <code>p</code> 在直线中时 <code>yp / xp = (y6 - y0) / (x6 - x0)</code>，即 <code>yp * (x6 - x0) - (y6 - y0) * xp = 0</code></p>
-<p>当像素点 <code>p</code> 在直线下方时 <code>yp / xp &lt; (y6 - y0) / (x6 - x0)</code>，即 <code>yp * (x6 - x0) - (y6 - y0) * xp &lt; 0</code></p>
-<p>把 <code>yp * (x6 - x0) - (y6 - y0) * xp</code> 记为 <code>F</code> 则 <code>F = yp * (x6 - x0) - (y6 - y0) * xp</code> 即为偏差公式，且起点偏差应为 <code>F0 = 0</code></p>
-<ol>
-<li><p>当 <code>F &gt; 0</code> 时，<code>x2 = x1 + 1</code>（即点亮右方像素点）</p>
-</li>
-<li><p>当 <code>F = 0</code> 时，<code>x2 = x1 + 1</code>（即点亮右方像素点）或 <code>y2 = y1 + 1</code>（即点亮上方像素点）</p>
-</li>
-<li><p>当 <code>F &lt; 0</code> 时，<code>y2 = y1 + 1</code>（即点亮上方像素点）</p>
-</li>
-</ol>
-<p>但逐次求解含有乘法的偏差公式严重影响效率<del>有木有啊</del>，简化为下式（当 <code>F = 0</code> 时取 <code>x2 = x1 + 1</code>）</p>
+<p>二叉树的遍历方式分为</p>
 <ul>
-<li><p>当 <code>F1 &gt;= 0</code> 时 <code>F2 = yp * (x6 - x0) - (y6 - y0) * (xp + 1) = F1 - (y6 - y0)</code></p>
-</li>
-<li><p>当 <code>F1 &lt; 0</code> 时 <code>F2 = (yp + 1) * (x6 - x0) - (y6 - y0) * xp = F1 + (x6 - x0)</code></p>
-</li>
+<li>前序遍历：根节点-&gt;左子节点-&gt;右子节点</li>
+<li>中序遍历：左子节点-&gt;根节点-&gt;右子节点</li>
+<li>后序遍历：左子节点-&gt;右子节点-&gt;根节点</li>
+<li>层序遍历(广度优先遍历)：从根到叶分层，每层从左到右遍历</li>
 </ul>
-<p><strong><em>因为可能点亮上方像素点，意味同一y值下不只点亮一点像素，故效率较低</em></strong></p>
-<p>同理可得第二象限、第三象限、第四象限求法，请读者自行计算，不再赘述（偷个懒 \滑稽）</p>
-<p>最终代码如下</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">使用openGL的glut库</span></span><br><span class="line"><span class="comment">#include &lt;gl\glut.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;math.h&gt;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">drawLineInsert</span><span class="params">(GLint x1, GLint y1, GLint x2, GLint y2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	glColor3f(<span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);	<span class="comment">//置颜色为红</span></span><br><span class="line">	<span class="keyword">int</span> dx = x2 - x1;</span><br><span class="line">	<span class="keyword">int</span> dy = y2 - y1;</span><br><span class="line">	<span class="keyword">int</span> f = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">double</span> x = x1;</span><br><span class="line">	<span class="keyword">double</span> y = y1;</span><br><span class="line">	glBegin(GL_POINTS);</span><br><span class="line">	<span class="keyword">while</span> (x &lt; x2 + <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		glVertex2f(x / <span class="number">10.0</span>, y / <span class="number">10.0</span>);	<span class="comment">//绘制于标准化坐标系，故除以10.0</span></span><br><span class="line">		<span class="keyword">if</span> (f &gt;= <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			x = x + <span class="number">1</span>;</span><br><span class="line">			f = f - dy;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			y = y + <span class="number">1</span>;</span><br><span class="line">			f = f + dx;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	glEnd();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>绘制结果如图（补上黑色网格，蓝线为预期效果，绿点为可点亮像素点，白色部分代表像素空隙（放大效果））</p>
-<p><img src="https://raw.githubusercontent.com/cz111000/DrawLine/master/Insert.PNG" alt="插补法效果图"></p>
-<h2 id="Bresenham算法"><a href="#Bresenham算法" class="headerlink" title="Bresenham算法"></a>Bresenham算法</h2><p>此算法基于DDA算法进行逐点比较改进而来，同逐点比较法以像素点为主，考虑<strong>右方向</strong>和<strong>右上方向</strong>像素点与直线位置，二选一点亮</p>
-<p>无耻地盗个图</p>
-<p><img src="https://camo.githubusercontent.com/c5669fe7d006c897cf652afa9a06f9ed9e773553/68747470733a2f2f696d6773612e62616964752e636f6d2f6261696b652f63302533446261696b6538302532433525324335253243383025324332362f7369676e3d36326235313930343938353034666332623635326238353738346234386337342f643031333733663038323032356161666539393465626337663865646162363430333466316131332e6a7067" alt="Bresenham原理图"></p>
-<p>同样取 <code>起点p0(0, 0) 终点p6(6, 4)</code> 代入公式 <strong>y = k · x + b</strong> 得 <code>k = 1.5，b = 0</code></p>
-<p>存在规律 <code>y2 = y1 + k</code>，若 <code>y1</code> 偏上则点亮右上方像素点，若 <code>y2</code> 偏下则点亮右方像素点，即比较交点 <code>y2</code> 与像素间距中点位置</p>
-<p>记 <code>d = (y2 - y1) / (x2 - x1) + (y2 - y1) / (x2 - x1) - └ (y2 - y1) / (x2 - x1) + (y1 - y0) / (x1 - x0) ┘</code> ，（<code>└x┘</code> 表示取下整，如 <code>└1.2┘ = 1</code>；减去取下整值是为保证 <code>d ∈ [0, 1]</code>）则</p>
-<p>当 <code>d &gt; 0.5</code> 时，<code>x2 = x1 + 1，y2 = y1 + 1</code>（即点亮右上方像素点）</p>
-<p>当 <code>d = 0.5</code> 时，<code>x2 = x1 + 1，y2 = y1 + 1</code>（即点亮右上方像素点）或 <code>x2 = x1 + 1</code>（即点亮右方像素点）</p>
-<p>当 <code>d &lt; 0.5</code> 时，<code>x2 = x1 + 1</code>（即点亮右方像素点）</p>
-<p>进一步设 <code>e = d - 0.5</code> 则</p>
-<p>当 <code>e &gt; 0</code> 时，<code>x2 = x1 + 1，y2 = y1 + 1</code>（即点亮右上方像素点）</p>
-<p>当 <code>e = 0</code> 时，<code>x2 = x1 + 1，y2 = y1 + 1</code>（即点亮右上方像素点）或 <code>x2 = x1 + 1</code>（即点亮右方像素点）</p>
-<p>当 <code>e &lt; 0</code> 时，<code>x2 = x1 + 1</code>（即点亮右方像素点）</p>
-<p>至此算法演变为判断 <code>e</code> 的正负号，既然如此我们可将算式转为整数加减形式避免除法提高效率</p>
-<p><em>`e = (2d - 1) </em> (x2 - x1) <em> …… </em> (x1 - x0) = 2 <em> (y2 - y1) </em> …… <em> (x1 - x0) + …… + (y1 - y0) </em> …… <em> (x2 - x1) - 2 </em> └ (y2 - y1) / (x2 - x1) + …… + (y1 - y0) / (x1 - x0) ┘ <em> (x2 - x1) </em> …… <em> (x1 - x0)  - 2 </em> └ …… + (y1 - y0) / (x1 - x0) ┘ <em> (x2 - x1) </em> …… <em> (x1 - x0) - (x2 - x1) </em> …… <em> (x1 - x0)`</em></p>
-<p>好家伙，劳资还是坚持打粗来了（= =）</p>
-<p>看似有规律，采取数学归纳法</p>
-<p>记 <code>e1 = (2d1 - 1) * (x1 - x0) = 2 * (y1 - y0) - 2 * └ (y1 - y0) / (x1 - x0) ┘ * (x1 - x0) - (x1 - x0)</code></p>
-<p>记 <code>e2 = (2d2 - 1) * (x2 - x1) * (x1 - x0) = 2 * (y2 - y1) * (x1 - x0) + 2 * (y1 - y0) * (x2 - x1) - 2 * └ (y2 - y1) / (x2 - x1) + (y1 - y0) / (x1 - x0) ┘ * (x2 - x1) * (x1 - x0) - 2 * └ (y1 - y0) / (x1 - x0) ┘ * (x2 - x1) * (x1 - x0) - (x2 - x1) * (x1 - x0)</code></p>
-<p>取下整采用分情况讨论（当 <code>d = 0.5</code> 时，<code>x2 = x1 + 1</code>）</p>
-<p>当 <code>d2 &lt; 1</code> 时</p>
-<p><code>e1 = (2d1 - 1) * (x1 - x0) = 2 * (y1 - y0) - (x1 - x0)</code></p>
-<p><code>e2 = (2d2 - 1) * (x2 - x1) * (x1 - x0) = 2 * (y2 - y1) * (x1 - x0) + 2 * (y1 - y0) * (x2 - x1) - (x2 - x1) * (x1 - x0)</code></p>
-<p>即</p>
-<p><code>e2 = e1 * (x2 - x1) + 2 * (y2 - y1) * (x1 - x0)</code></p>
-<p>当 <code>d2 &gt; 1</code> 或 <code>d2 = 1</code> 时</p>
-<p><code>e1 = (2d1 - 1) * (x1 - x0) = 2 * (y1 - y0) - (x1 - x0)</code></p>
-<p><code>e2 = (2(d2 - 1) - 1) * (x2 - x1) * (x1 - x0) = 2 * (y2 - y1) * (x1 - x0) + 2 * (y1 - y0) * (x2 - x1) - (x2 - x1) * (x1 - x0) - 2 * (x2 - x1) * (x1 - x0)</code></p>
-<p>即</p>
-<p><code>e2 = e1 * (x2 - x1) + 2 * (y2 - y1) * (x1 - x0) - 2 * (x2 - x1) * (x1 - x0)</code></p>
-<p>大可利用编程语言 <code>d = d + k</code> 特性，且 <code>dx = (x2 - x1) = 1，dy = (y2 - y1) = k</code> 为固定值</p>
-<p>当 <code>d &lt; 1</code> 即 <code>d - 0.5 &lt; 1 - 0.5 -&gt; 2 * (d - 0.5) &lt; 1</code> -&gt; <code>2 * (d - 0.5) * dx &lt; dx</code> -&gt; <code>e &lt; dx</code> 时</p>
-<p><code>e = e * dx + 2 * dy * dx</code></p>
-<p>当 <code>d &gt; 1</code> 或 <code>d = 1</code> 同理即 <code>e &gt; dx</code> 或 <code>e = dx</code> 时</p>
-<p><code>e = e * dx + 2 * dy * dx - 2 * dx * dx</code></p>
-<p><strong><code>e</code> 初始值为 <code>e0 = 2 * (0 - 0.5) * (x1 - x0) = -(x1 - x0) = -dx</code></strong></p>
-<p><strong>当 <code>e &gt; dx</code> 时，<code>e = e + 2 * dy * dx - 2 * dx * dx</code>（即点亮右上方像素点）</strong></p>
-<p><strong>当 <code>e = dx</code> 时，<code>e = e + 2 * dy * dx - 2 * dx * dx</code>（即点亮右上方像素点）</strong></p>
-<p><strong>当 <code>e &lt; dx</code> 时，<code>e = e - 2 * dx * dx</code>（即点亮右方像素点）</strong></p>
-<p><strong><em>同一y值下仅点亮一点像素，且计算过程均为加减法 (上式乘数固定值)，适用各象限无需分类，高效快捷</em></strong></p>
-<p>最终代码如下<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">使用openGL的glut库</span></span><br><span class="line"><span class="comment">#include &lt;gl\glut.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;math.h&gt;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">drawLineBresenham</span><span class="params">(GLint x1, GLint y1, GLint x2, GLint y2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	glColor3f(<span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);	<span class="comment">//置颜色为红</span></span><br><span class="line">	<span class="keyword">int</span> dx = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">double</span> dy = (y2 - y1) / (<span class="keyword">double</span>)(x2 - x1);</span><br><span class="line">	<span class="keyword">double</span> e = -dx;</span><br><span class="line">	<span class="keyword">double</span> x = x1;</span><br><span class="line">	<span class="keyword">double</span> y = y1;</span><br><span class="line">	glBegin(GL_POINTS);</span><br><span class="line">	<span class="keyword">while</span> (x &lt; x2 + <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		glVertex2f(x / <span class="number">10.0</span>, y / <span class="number">10.0</span>);	<span class="comment">//绘制于标准化坐标系，故除以10.0</span></span><br><span class="line">		x++;</span><br><span class="line">		e = e + <span class="number">2</span> * dy * dx;	<span class="comment">//可换为单一变量无需多次做乘法</span></span><br><span class="line">		<span class="keyword">if</span> (e &gt;= <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			y++;</span><br><span class="line">			e = e - <span class="number">2</span> * dx * dx;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	glEnd();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>绘制结果如图（补上黑色网格，蓝线为预期效果，绿点为可点亮像素点，白色部分代表像素空隙（放大效果））</p>
-<p><img src="https://raw.githubusercontent.com/cz111000/DrawLine/master/Bresenham.PNG" alt="Bresenham算法效果图"></p>
-<hr>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><em><a href="http://baike.baidu.com/item/DDA%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">DDA算法_百度百科</a></em></p>
-<p><em><a href="https://wenku.baidu.com/view/7df948146c175f0e7cd1377f.html" target="_blank" rel="noopener">逐点比较法直线插补</a></em></p>
-<p><em><a href="https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm" target="_blank" rel="noopener">Bresenham’s line algorithm - Wikipedia</a></em></p>
-<p><em><a href="http://www.360doc.com/content/13/1220/09/11400509_338596444.shtml" target="_blank" rel="noopener">Bresenham直线算法与画圆算法</a></em></p>
+<p><strong>小诀窍：中序遍历可由投影法直观得出。</strong>如图所示<br><img src="https://img.vim-cn.com/54/90fa21c2cac47cab225ab59c7c883c83e1793c.png" alt="中序遍历"><br>对于题中二叉树不难得出</p>
+<ul>
+<li>前序遍历为 <code>10 6 4 8 14 12 16</code></li>
+<li>中序遍历为 <code>4 6 8 10 12 14 16</code></li>
+<li>后序遍历为 <code>4 8 6 12 16 14 10</code></li>
+</ul>
+<p>观察发现</p>
+<ul>
+<li>前序遍历顺序记录根节点信息，即根节点 <code>10</code> 先于子节点 <code>6 14</code> 遍历</li>
+<li>中序遍历记录左右子树范围，即左子树节点 <code>4 6 8</code> 先于根节点 <code>10</code> 遍历，右子树节点 <code>12 14 16</code> 后于根节点 <code>10</code> 遍历</li>
+<li>后序遍历倒序记录根节点信息，即根节点 <code>10</code> 后于子节点 <code>6 14</code> 遍历</li>
+</ul>
+<p>以前序为主，中序为辅，便可重建二叉树😎。代码如下<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BinaryTreeNode* <span class="title">rebuildBinaryTree</span><span class="params">(<span class="keyword">int</span> *preOrder, <span class="keyword">int</span> *inOrder, <span class="keyword">int</span> length)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">nullptr</span> == preOrder || <span class="literal">nullptr</span> == inOrder || length &lt;= <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">    BinaryTreeNode *pRoot = <span class="literal">nullptr</span>;</span><br><span class="line">    BinaryTreeNode *pNode = <span class="literal">nullptr</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; ++i)</span><br><span class="line">        <span class="keyword">if</span> (<span class="literal">nullptr</span> != pRoot)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">bool</span> leftNode = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">int</span> position = length;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; length; ++j)</span><br><span class="line">                <span class="keyword">if</span> (inOrder[j] == pNode-&gt;val)</span><br><span class="line">                    position = j;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (inOrder[j] == preOrder[i])</span><br><span class="line">                &#123;</span><br><span class="line">                    leftNode = j &lt; position;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            <span class="keyword">if</span> (leftNode)</span><br><span class="line">            &#123;</span><br><span class="line">                pNode-&gt;left = <span class="keyword">new</span> BinaryTreeNode(preOrder[i]);</span><br><span class="line">                pNode = pNode-&gt;left;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                pNode-&gt;right = <span class="keyword">new</span> BinaryTreeNode(preOrder[i]);</span><br><span class="line">                pNode = pNode-&gt;right;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            pNode = pRoot = <span class="keyword">new</span> BinaryTreeNode(preOrder[i]);</span><br><span class="line">        <span class="keyword">return</span> pRoot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>此法使用双重循环，效率甚低。可以使用map将inOrder中的数值对应下标存储，以空间换时间。<br>不过书中提供了更好的思路<strong>（分治法）：既然可得出左右子树包含数值，不妨继续对子树继续进行左右子树划分，由此可先（解决小问题）得出含叶子节点子树，继而（解决大问题）合并子树成较大子树，最终形成二叉树。</strong>下为子树分析图片<br><img src="https://img.vim-cn.com/2c/d21afdcb4b65d685e86fdfafbea3dacf104fe3.jpg" alt="子树分析图片"><br>分治法需递归实现，书中神级代码如下：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BinaryTreeNode* <span class="title">rebuildBinaryTree</span><span class="params">(<span class="keyword">int</span> *preOrder, <span class="keyword">int</span> *inOrder, <span class="keyword">int</span> length)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">nullptr</span> == preOrder || <span class="literal">nullptr</span> == inOrder || length &lt;= <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">    <span class="comment">// 递归传入：左子树起点，左子树终点，右子树起点，右子树终点</span></span><br><span class="line">    <span class="keyword">return</span> constructCore(preOrder, preOrder + length - <span class="number">1</span>, inOrder, inOrder + length - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">BinaryTreeNode* <span class="title">constructCore</span><span class="params">(<span class="keyword">int</span> *startPreOrder, <span class="keyword">int</span> *endPreOrder, <span class="keyword">int</span> *startInOrder, <span class="keyword">int</span> *endInOrder)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    BinaryTreeNode * pRoot = <span class="keyword">new</span> BinaryTreeNode(*startPreOrder);</span><br><span class="line">    <span class="keyword">if</span> (startPreOrder == endPreOrder)</span><br><span class="line">        <span class="keyword">if</span> (startInOrder == endInOrder)</span><br><span class="line">            <span class="keyword">if</span> (*startPreOrder == *startInOrder)</span><br><span class="line">                <span class="keyword">return</span> pRoot;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">throw</span> <span class="built_in">std</span>::exception(<span class="string">"Invalid input"</span>);</span><br><span class="line">    <span class="keyword">int</span> * rootPosition = startInOrder;</span><br><span class="line">    <span class="keyword">while</span> (*rootPosition != *startPreOrder &amp;&amp; rootPosition &lt;= endInOrder)</span><br><span class="line">        ++rootPosition;</span><br><span class="line">    <span class="keyword">if</span> (rootPosition &gt; endInOrder)</span><br><span class="line">        <span class="keyword">throw</span> <span class="built_in">std</span>::exception(<span class="string">"Invalid input"</span>);</span><br><span class="line">    <span class="keyword">int</span> leftLength = (rootPosition - <span class="number">1</span>) - startInOrder;</span><br><span class="line">    <span class="keyword">int</span> rightLength = endInOrder - (rootPosition + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (leftLength &gt; <span class="number">0</span>)</span><br><span class="line">        <span class="comment">// 此处传参范围需参考子树分析图片</span></span><br><span class="line">        pRoot-&gt;left = constructCore(startPreOrder + <span class="number">1</span>, (startPreOrder + <span class="number">1</span>) + leftLength, startInOrder, rootPosition - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (rightLength &gt; <span class="number">0</span>)</span><br><span class="line">        <span class="comment">// 此处传参需范围参考子树分析图片</span></span><br><span class="line">        pRoot-&gt;right = constructCore((startPreOrder + <span class="number">1</span>) + leftLength + <span class="number">1</span>, endPreOrder, rootPosition + <span class="number">1</span>, endInOrder);</span><br><span class="line">    <span class="keyword">return</span> pRoot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -626,7 +539,7 @@
                         </strong>
                         <!--
                         <br>
-                        <strong>本文链接：</strong><a href="https://cz111000.github.io/2018/03/24/计算机图形学-直线/">https://cz111000.github.io/2018/03/24/计算机图形学-直线/</a>
+                        <strong>本文链接：</strong><a href="https://cz111000.github.io/2018/03/28/剑指Offer-题7-重建二叉树/">https://cz111000.github.io/2018/03/28/剑指Offer-题7-重建二叉树/</a>
                         -->
                     </p>
                 </blockquote>
@@ -685,21 +598,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2018/03/24/剑指Offer-题1-赋值运算符函数/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2018/03/22/排序算法总结(上)/" id="post_nav-older" class="next-content">
+        <a href="/2018/03/27/剑指Offer-题6-从尾到头打印链表/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
