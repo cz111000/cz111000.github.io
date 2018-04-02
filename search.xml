@@ -3,6 +3,56 @@
   
     
     <entry>
+      <title>剑指Offer-题9-用两个栈实现队列</title>
+      <link href="/2018/04/02/%E5%89%91%E6%8C%87Offer-%E9%A2%989-%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/"/>
+      <url>/2018/04/02/%E5%89%91%E6%8C%87Offer-%E9%A2%989-%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/</url>
+      <content type="html"><![CDATA[<h1 id="题目：用两个栈实现队列"><a href="#题目：用两个栈实现队列" class="headerlink" title="题目：用两个栈实现队列"></a>题目：用两个栈实现队列</h1><h2 id="题目一：用两个栈实现队列"><a href="#题目一：用两个栈实现队列" class="headerlink" title="题目一：用两个栈实现队列"></a>题目一：用两个栈实现队列</h2><p>用两个栈实现一个队列。队列的声明如下：请实现它的两个函数appendTail和deleteHead，分别完成在队列尾部插入结点和在队列头部删除结点的功能。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;<span class="class"><span class="keyword">class</span> <span class="title">CQueue</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    CQueue();</span><br><span class="line">    ~CQueue();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">appendTail</span><span class="params">(<span class="keyword">const</span> T&amp; node)</span></span>;</span><br><span class="line">    <span class="function">T <span class="title">deleteHead</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">stack</span>&lt;T&gt; stack1;</span><br><span class="line">    <span class="built_in">stack</span>&lt;T&gt; stack2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p><h2 id="题目二：用两个队列栈实现栈"><a href="#题目二：用两个队列栈实现栈" class="headerlink" title="题目二：用两个队列栈实现栈"></a>题目二：用两个队列栈实现栈</h2><p>用两个队列实现一个栈。请实现它的两个函数appendTail和deleteTail。</p><h1 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h1><h2 id="解析题目一"><a href="#解析题目一" class="headerlink" title="解析题目一"></a>解析题目一</h2><p>栈：先进后出<br>堆：先进先出<br>想用栈实现堆，只能将栈倒放。好在有两个栈，可以倒序存取。故代码如下<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">void</span> CQueue&lt;T&gt;::appendTail(<span class="keyword">const</span> T&amp; node)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span> (!stack2.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        stack1.push(stack2.top());</span><br><span class="line">        stack2.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    stack1.push(node);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">T CQueue&lt;T&gt;::deleteHead()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span> (!stack1.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        stack2.push(stack1.top());</span><br><span class="line">        stack1.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    T temp = stack2.top();</span><br><span class="line">    stack2.pop();</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>以上代码存在两大问题😭</p><ol><li><code>stack2.pop()</code> 未进行栈空判断</li><li>存取均拷贝栈数据，效率低下</li></ol><p>深入分析，栈结构符合存储操作，无需改动；删除操作只需改变单个栈结构，一个当堆头，一个当堆尾。如图所示<br><img src="https://img.vim-cn.com/f3/51b58d9a654bb7a95e948dea1243b1fb4da4e0.gif" alt="动画演示"><br>以下是优化后的代码<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">void</span> CQueue&lt;T&gt;::appendTail(<span class="keyword">const</span> T&amp; node)</span><br><span class="line">&#123;</span><br><span class="line">    stack1.push(node);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">T CQueue&lt;T&gt;::deleteHead()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (stack2.empty())</span><br><span class="line">        <span class="keyword">while</span> (!stack1.empty())</span><br><span class="line">        &#123;</span><br><span class="line">            stack2.push(stack1.top());</span><br><span class="line">            stack1.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">if</span> (stack2.empty())</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> exception(<span class="string">"queue is empty"</span>);</span><br><span class="line">    T temp = stack2.top();</span><br><span class="line">    stack2.pop();</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h2 id="解析题目二"><a href="#解析题目二" class="headerlink" title="解析题目二"></a>解析题目二</h2><p>堆结构符合存储操作，无需改动；删除操作需转移中执行，故两个堆轮流使用。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">void</span> CStack&lt;T&gt;::appendTail(<span class="keyword">const</span> T&amp; node)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">queue</span>&lt;T&gt; saveQueue = !queue1.empty() ? queue1 : queue2;</span><br><span class="line">    saveQueue.push(node);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">T CStack&lt;T&gt;::deleteTail()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">queue</span>&lt;T&gt; readQueue = !queue1.empty() ? queue1 : queue2;</span><br><span class="line">    <span class="built_in">queue</span>&lt;T&gt; saveQueue = queue1.empty() ? queue1 : queue2;</span><br><span class="line">    <span class="keyword">while</span> (!readQueue.size() &gt; <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        saveQueue.push(readQueue.top());</span><br><span class="line">        readQueue.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (saveQueue.empty())</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> exception(<span class="string">"stack is empty"</span>);</span><br><span class="line">    T temp = readQueue.top();</span><br><span class="line">    readQueue.pop();</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      <categories>
+          
+          <category> 剑指Offer </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 剑指Offer </tag>
+            
+            <tag> 栈 </tag>
+            
+            <tag> 队列 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>剑指Offer-题8-二叉树的下一个节点</title>
+      <link href="/2018/03/30/%E5%89%91%E6%8C%87Offer-%E9%A2%988-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%8B%E4%B8%80%E4%B8%AA%E8%8A%82%E7%82%B9/"/>
+      <url>/2018/03/30/%E5%89%91%E6%8C%87Offer-%E9%A2%988-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%8B%E4%B8%80%E4%B8%AA%E8%8A%82%E7%82%B9/</url>
+      <content type="html"><![CDATA[<h1 id="题目：二叉树的下一个节点"><a href="#题目：二叉树的下一个节点" class="headerlink" title="题目：二叉树的下一个节点"></a>题目：二叉树的下一个节点</h1><p>给定一个二叉树和其中的一个结点，请找出中序遍历顺序的下一个结点并且返回。注意，树中的结点不仅包含左右子结点，同时包含指向父结点的指针。</p><h1 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h1><p>通过举例画出二叉树，分情况讨论<strong>（有序判断，不可颠倒）</strong>：</p><ul><li>给定节点含右子节点，判断给定节点右子节点<ul><li>给定节点右子节点含左子节点，取给定节点右子节点<strong>左子叶</strong></li><li>给定节点右子节点含右子节点，取给定节点右子节点</li><li>给定节点右子节点不含子节点，取给定节点右子节点</li></ul></li><li>给定节点不含右子节点，判断给定节点父节点<ul><li>给定节点为其父节点左子节点，取给定节点父节点</li><li>给定节点为其父节点右子节点，判断给定节点父节点父节点<ul><li>给定节点父节点为其父节点左子节点，取给定节点父节点父节点</li><li>给定节点父节点为其父节点右子节点，判断给定节点父节点父节点父节点<ul><li>……<strong>（循环往复，直至节点为其父节左子节点）</strong></li></ul></li></ul></li></ul></li></ul><p>根据讨论写出如下代码<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BinaryTreeNode* <span class="title">findNext</span><span class="params">(BinaryTreeNode *pNode)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">nullptr</span> == pNode)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">    BinaryTreeNode *pNext = <span class="literal">nullptr</span>;</span><br><span class="line">    <span class="keyword">if</span> (pNode-&gt;right != <span class="literal">nullptr</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        pNext = pNode-&gt;right;</span><br><span class="line">        <span class="keyword">if</span> (pNext-&gt;left != <span class="literal">nullptr</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">while</span> (pNext-&gt;left != <span class="literal">nullptr</span>)</span><br><span class="line">                pNext = pNext-&gt;left;</span><br><span class="line">            <span class="keyword">return</span> pNext;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> pNext;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        pNext = pNode-&gt;root;</span><br><span class="line">        <span class="keyword">while</span> (pNext != <span class="literal">nullptr</span> &amp;&amp; pNext-&gt;right == pNode)</span><br><span class="line">        &#123;</span><br><span class="line">            pNode = pNext;</span><br><span class="line">            pNext = pNode-&gt;root;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> pNext;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>与书中代码如出一辙😎！</p>]]></content>
+      
+      <categories>
+          
+          <category> 剑指Offer </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 剑指Offer </tag>
+            
+            <tag> 二叉树 </tag>
+            
+            <tag> 节点 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>剑指Offer-题7-重建二叉树</title>
       <link href="/2018/03/28/%E5%89%91%E6%8C%87Offer-%E9%A2%987-%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
       <url>/2018/03/28/%E5%89%91%E6%8C%87Offer-%E9%A2%987-%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91/</url>
@@ -96,9 +146,9 @@
             
             <tag> 剑指Offer </tag>
             
-            <tag> 二维 </tag>
-            
             <tag> 数组 </tag>
+            
+            <tag> 二维 </tag>
             
             <tag> 查找 </tag>
             
@@ -275,16 +325,16 @@
     </entry>
     
     <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>links</title>
+      <link href="/links/index.html"/>
+      <url>/links/index.html</url>
       <content type="html"><![CDATA[]]></content>
     </entry>
     
     <entry>
-      <title>links</title>
-      <link href="/links/index.html"/>
-      <url>/links/index.html</url>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       <content type="html"><![CDATA[]]></content>
     </entry>
     
