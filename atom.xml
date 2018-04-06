@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cz111000.github.io/"/>
-  <updated>2018-04-02T15:44:32.897Z</updated>
+  <updated>2018-04-06T09:40:26.035Z</updated>
   <id>https://cz111000.github.io/</id>
   
   <author>
@@ -15,6 +15,64 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>开源协议总结</title>
+    <link href="https://cz111000.github.io/2018/04/06/%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE%E6%80%BB%E7%BB%93/"/>
+    <id>https://cz111000.github.io/2018/04/06/开源协议总结/</id>
+    <published>2018-04-06T09:36:07.000Z</published>
+    <updated>2018-04-06T09:40:26.035Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://img.vim-cn.com/c5/07eabfceb868787fd5734274dcd2471f98c08c.png&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="杂项" scheme="https://cz111000.github.io/categories/%E6%9D%82%E9%A1%B9/"/>
+    
+    
+      <category term="开源" scheme="https://cz111000.github.io/tags/%E5%BC%80%E6%BA%90/"/>
+    
+      <category term="协议" scheme="https://cz111000.github.io/tags/%E5%8D%8F%E8%AE%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SSH框架-初识Struts2</title>
+    <link href="https://cz111000.github.io/2018/04/05/SSH%E6%A1%86%E6%9E%B6-%E5%88%9D%E8%AF%86Struts2/"/>
+    <id>https://cz111000.github.io/2018/04/05/SSH框架-初识Struts2/</id>
+    <published>2018-04-05T04:15:21.000Z</published>
+    <updated>2018-04-06T16:35:45.701Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;p&gt;最初的Java Web开发由 &lt;code&gt;JavaBean + JSP&lt;/code&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="框架" scheme="https://cz111000.github.io/categories/%E6%A1%86%E6%9E%B6/"/>
+    
+    
+      <category term="SSH" scheme="https://cz111000.github.io/tags/SSH/"/>
+    
+      <category term="框架" scheme="https://cz111000.github.io/tags/%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="Struts" scheme="https://cz111000.github.io/tags/Struts/"/>
+    
+  </entry>
   
   <entry>
     <title>剑指Offer-题9-用两个栈实现队列</title>
