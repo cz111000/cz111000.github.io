@@ -245,7 +245,7 @@
 
     
         <meta property="article:published_time" content="Thu Apr 05 2018 12:15:21 GMT+0800">
-        <meta property="article:modified_time" content="Sat Apr 07 2018 00:35:45 GMT+0800">
+        <meta property="article:modified_time" content="Sat Apr 07 2018 00:51:01 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -268,7 +268,7 @@
     "mainEntityOfPage": "https://cz111000.github.io/2018/04/05/SSH框架-初识Struts2/index.html",
     "headline": "SSH框架-初识Struts2",
     "datePublished": "Thu Apr 05 2018 12:15:21 GMT+0800",
-    "dateModified": "Sat Apr 07 2018 00:35:45 GMT+0800",
+    "dateModified": "Sat Apr 07 2018 00:51:01 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Orange",
@@ -624,10 +624,10 @@
 <li>精确匹配(Exact Match)</li>
 <li>前缀匹配(Prefix Match)</li>
 <li>后缀匹配(Extension Match)</li>
-<li>加入欢迎页面地址匹配(Welcome resources processing for servlets)<br> 4.1. 欢迎页面精确匹配(Welcome resources processing for exact macth)<br> 4.2. 欢迎页面前缀匹配(Welcome resources processing for prefix match)<br> 4.3. 欢迎页面静态文件匹配(Welcome resources processing for physical folder)</li>
+<li>加入欢迎页面地址匹配(Welcome resources processing for servlets)<br> 4.1. 欢迎页面精确匹配(Welcome resources processing for exact macth)<br> 4.2. 欢迎页面前缀匹配(Welcome resources processing for prefix match)<br> 4.3. 欢迎页面静态文件匹配(Welcome resources processing for physical folder)<br> 4.4. 欢迎页面后缀匹配(welcome file processing - take 2)</li>
 <li>默认Servlet路径“/”匹配(Default servlet)</li>
 </ol>
-<p>进入 <code>Mapper</code> 时由于首次启动访问主页URL为 <code>http://host:port/project/</code> 以“/”结尾，故步骤1、2、3均匹配失败。<br>进入步骤4，请求URL变为 <code>http://host:port/project/*.action</code> 。<br>然而 <code>wrapper容器</code> 仅支持查找 <code>Servlet</code> ，故步骤4.1、4.2均失败，由于未创建文件 <code>*.action</code> 故步骤4.3依旧失败。<br>URL重新退化为 <code>http://host:port/project/</code> 传给过滤器(filter)处理，进入Struts2框架。<br>Struts2框架无法匹配此URL对应action，故主页设置未生效。</p>
+<p>进入 <code>Mapper</code> 时由于首次启动访问主页URL为 <code>http://host:port/project/</code> 以“/”结尾，故步骤1、2、3均匹配失败。<br>进入步骤4，请求URL变为 <code>http://host:port/project/*.action</code> 。<br>然而 <code>wrapper容器</code> 仅支持查找 <code>Servlet</code> ，故步骤4.1、4.2均失败，由于未创建文件 <code>*.action</code> 故步骤4.3依旧失败。<br><code>wrapper容器</code> 仅支持查找 <code>Servlet</code> ，同理步骤4.4也失败。<br>URL重新退化为 <code>http://host:port/project/</code> 进入步骤7成功匹配，传给过滤器(filter)处理，进入Struts2框架。<br>Struts2框架无法匹配此URL对应action，故主页设置未生效。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>至此，Struts2框架基本使用方法掌握。</p>
 
         
