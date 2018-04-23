@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>SSH框架-初识Spring</title>
+      <link href="/2018/04/23/SSH%E6%A1%86%E6%9E%B6-%E5%88%9D%E8%AF%86Spring/"/>
+      <url>/2018/04/23/SSH%E6%A1%86%E6%9E%B6-%E5%88%9D%E8%AF%86Spring/</url>
+      <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h1 id="MVC模式"><a href="#MVC模式" class="headerlink" title="MVC模式"></a>MVC模式</h1><h1 id="Struts简史"><a href="#Struts简史" class="headerlink" title="Struts简史"></a>Struts简史</h1><h1 id="过滤器-filter"><a href="#过滤器-filter" class="headerlink" title="过滤器(filter)"></a>过滤器(filter)</h1><h1 id="Struts2原理"><a href="#Struts2原理" class="headerlink" title="Struts2原理"></a>Struts2原理</h1><h1 id="Struts2使用"><a href="#Struts2使用" class="headerlink" title="Struts2使用"></a>Struts2使用</h1><h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><h2 id="创建action"><a href="#创建action" class="headerlink" title="创建action"></a>创建action</h2>]]></content>
+      
+      <categories>
+          
+          <category> 框架 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> SSH </tag>
+            
+            <tag> 框架 </tag>
+            
+            <tag> Spring </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>SSH框架-初识Hibernate</title>
       <link href="/2018/04/08/SSH%E6%A1%86%E6%9E%B6-%E5%88%9D%E8%AF%86Hibernate/"/>
       <url>/2018/04/08/SSH%E6%A1%86%E6%9E%B6-%E5%88%9D%E8%AF%86Hibernate/</url>
