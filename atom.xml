@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cz111000.github.io/"/>
-  <updated>2018-04-23T12:36:05.431Z</updated>
+  <updated>2018-05-05T06:32:12.511Z</updated>
   <id>https://cz111000.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>SSH框架-初识Spring</title>
-    <link href="https://cz111000.github.io/2018/04/23/SSH%E6%A1%86%E6%9E%B6-%E5%88%9D%E8%AF%86Spring/"/>
-    <id>https://cz111000.github.io/2018/04/23/SSH框架-初识Spring/</id>
-    <published>2018-04-23T12:10:46.000Z</published>
-    <updated>2018-04-23T12:36:05.431Z</updated>
+    <title>字符集总结</title>
+    <link href="https://cz111000.github.io/2018/05/05/%E5%AD%97%E7%AC%A6%E9%9B%86%E6%80%BB%E7%BB%93/"/>
+    <id>https://cz111000.github.io/2018/05/05/字符集总结/</id>
+    <published>2018-05-05T06:28:08.000Z</published>
+    <updated>2018-05-05T06:32:12.511Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,36 @@
       
         
         
-          &lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;h1 id=&quot;MVC模式&quot;&gt;&lt;a href=&quot;#MVC模式&quot; class=&quot;headerlink&quot;
+          &lt;p&gt;&lt;img src=&quot;https://img.vim-cn.com/b5/2b3603aa71348a0956bac67ccc45303ec07e05.png&quot; alt=&quot;一图读懂各种字符集&quot;&gt;&lt;/p&gt;
+&lt;p&gt;SBCS(single-byte character
+        
+      
+    
+    </summary>
+    
+      <category term="杂项" scheme="https://cz111000.github.io/categories/%E6%9D%82%E9%A1%B9/"/>
+    
+    
+      <category term="字符" scheme="https://cz111000.github.io/tags/%E5%AD%97%E7%AC%A6/"/>
+    
+      <category term="字符集" scheme="https://cz111000.github.io/tags/%E5%AD%97%E7%AC%A6%E9%9B%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SSH框架-初识Spring</title>
+    <link href="https://cz111000.github.io/2018/04/23/SSH%E6%A1%86%E6%9E%B6-%E5%88%9D%E8%AF%86Spring/"/>
+    <id>https://cz111000.github.io/2018/04/23/SSH框架-初识Spring/</id>
+    <published>2018-04-23T12:10:46.000Z</published>
+    <updated>2018-04-25T08:12:59.641Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;p&gt;最初的Java EE（现被Oracle公司改称Jakarta
         
       
     
